@@ -1,0 +1,121 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.menu {
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(180deg, #F66A09 0%, #FBB044 100%);
+    position: fixed;
+    overflow: auto;
+    left: 0;
+}
+
+.menu .logo{
+    margin: 25px;
+    margin-bottom: 50px;
+    width: 75%;
+    float: left;
+    display: block;
+}
+
+.menu .seccionMenu{
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 35px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #ffffff;
+    margin-bottom: 25px;
+}
+
+.menu .seccionMenu:hover{
+    color: #3b3b3b;
+}
+
+.menu .icono{
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 35px;
+    letter-spacing: 0em;
+    cursor: pointer;
+    color: #ffffff;
+    margin-bottom: 25px;
+}
+
+.menu .infoPerfil{
+    font-size: 50px;
+    color: #ffffff;
+    cursor: pointer;
+    position: absolute;
+    bottom: 15px;
+}
+
+.menu .infoPerfil .nombre{
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-left: 15px;
+}
+
+.menu .infoPerfil .usuario{
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-left: 15px;
+}
+
+
+
+.menu-celular{
+    background: linear-gradient(89.96deg, #F66B0A 0.03%, #FBB044 99.96%);
+    color: white;
+    padding: 25px;
+    font-size: 20px;
+}
+
+@media (min-width: 1200px) {
+    .menu .icono{
+        text-align: right;
+    }
+}
+
+@media (max-width: 1200px) {
+    .seccionMenu{
+        display: none;
+    }
+    .infoPerfil .perfil{
+        display: none;
+    }
+    .infoPerfil {
+        left: 40%;
+    }
+    .menu .icono{
+        text-align: center;
+        font-size: 30px;
+    }
+
+}
+
+@media (min-width: 720px) {
+    .menu-celular{
+        display: none;
+    }
+}
+
+@media (max-width: 720px) {
+    .menu{
+      display:none;
+    }
+}
+

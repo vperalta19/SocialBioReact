@@ -1,71 +1,99 @@
 import React from 'react'
-import './../assets/css/styles.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import logo from './../assets/img/logoblanco.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faHome} from '@fortawesome/free-solid-svg-icons'
 import {faUser} from '@fortawesome/free-solid-svg-icons'
 import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import {faBell} from '@fortawesome/free-solid-svg-icons'
+import {faPlusCircle} from '@fortawesome/free-solid-svg-icons'
+import {faUserCircle} from '@fortawesome/free-regular-svg-icons'
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './../assets/css/Menu.css';
+
 
 export default function Menu(){
     return(
-        <div className="container-fluid">
-            <div className="row">
-                <div className="col menulateral">
-
-                    <img className='logoperfil  mb-4 mt-5' src={logo} alt="logo Social Bio"/>
-
-                    <div className="row align-items-center">
-
-                        <div className="col-2 pl-2">
-                            <FontAwesomeIcon icon={faHome}/>
-                            <FontAwesomeIcon icon={faUser}/>
-                            <FontAwesomeIcon icon={faSearch}/>
-                            <FontAwesomeIcon icon={faBell}/>
+        <div>
+            <div className='container-fluid'>
+                <div className='row'>
+                    <div className='col-3 menu'>
+                        <div className='row'>
+                            <div className='col'>
+                                <img className='logo' src={logo} alt='logo'/>
+                            </div>
                         </div>
-
-                        <div className="col-10 pl-2 pr-0">
-                            <ul>
-                                <li >Inicio</li>
-                                <li >Perfil</li>
-                                <li >Explorar</li>
-                                <li >Notificaciones</li>
-                            </ul>
+                        <div className="row text-left align-items-center">
+                            <div className='col-xl-3 col icono'>
+                                <FontAwesomeIcon icon={faHome}/>
+                            </div>
+                            <div className=' seccionMenu col-9'>
+                                <div>INICIO</div>
+                            </div>
                         </div>
-
-                    </div>
-
-                    <div className="nombrecuenta">
-                        <img src="" alt=""/>
-                        <p className="text-white m-0">Cuenta</p>
-                        <p className="text-white m-0">Nombre</p>
+                        <div className="row text-left align-items-center">
+                            <div className='col-xl-3 col icono'>
+                                <FontAwesomeIcon icon={faUser}/>
+                            </div>
+                            <div className=' seccionMenu col-9'>
+                                <div>PERFIL</div>
+                            </div>
+                        </div>
+                        <div className="row text-left align-items-center">
+                            <div className='col-xl-3 col icono'>
+                                <FontAwesomeIcon icon={faSearch}/>
+                            </div>
+                            <div className=' seccionMenu col-9'>
+                                <div>EXPLORAR</div>
+                            </div>
+                        </div>
+                        <div className="row text-left align-items-center">
+                            <div className='col-xl-3 col icono'>
+                                <FontAwesomeIcon icon={faBell}/>
+                            </div>
+                            <div className=' seccionMenu col-9'>
+                                <div>NOTIFICACIONES</div>
+                            </div>
+                        </div>
+                        <div className="row infoPerfil">
+                            <div className='col-xl-2 col avatar'>
+                                <FontAwesomeIcon icon={faUserCircle}/>
+                            </div>
+                            <div className='col-10 perfil'>
+                                <div className='nombre'>Juan Manuel Belgrano</div>
+                                <div className='usuario'>@jmbelgrano</div>
+                            </div>
+                            
+                        </div>
                     </div>
 
                 </div>
-
-                
-
-                
-
+            </div>
+            <footer>
+                <div className='container'>
+                    <div class="row menu-celular fixed-bottom align-items-center">
+                        <div className='col'>
+                            <FontAwesomeIcon className='icono' icon={faHome}/>
+                        </div>
+                        <div className='col'>
+                            <FontAwesomeIcon className='icono' icon={faUser}/>
+                        </div>
+                        <div className='col'>
+                            <FontAwesomeIcon className='icono' icon={faPlusCircle}/>
+                        </div>
+                        <div className='col'>
+                            <FontAwesomeIcon className='icono' icon={faSearch}/>
+                        </div>
+                        <div className='col'>
+                            <FontAwesomeIcon className='icono' icon={faBell}/>
+                        </div>
+                        
+                    </div>
                 </div>
-
-
-
-    </div>
-
-
-
-    /*MENU MOBILE
-        <footer>
-        <nav class="navbar fixed-bottom">
-            <a href="#"><span class="fas fa-home"></span></a>
-            <a href="#"><span class="fas fa-user"></span></a>
-            <a href="#"><span class="fas fa-plus"></span></a>
-            <a href="#"><span class="fas fa-search"></span></a>
-            <a href="#"><span class="fas fa-bell"></span></a>
-        </nav>
-        </footer>
-    </body>*/
+                
+            </footer>
+        </div>
+        
     )
 }
