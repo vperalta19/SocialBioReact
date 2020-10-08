@@ -14,12 +14,14 @@
 }
 
 .menu .logo{
-    margin: 25px;
+    margin-top: 25px;
     margin-bottom: 50px;
-    width: 75%;
+    width: 100%;
     float: left;
     display: block;
 }
+
+
 
 .menu .seccionMenu{
     font-size: 20px;
@@ -28,11 +30,16 @@
     line-height: 35px;
     letter-spacing: 0em;
     text-align: left;
-    color: #ffffff;
+    
     margin-bottom: 25px;
+    cursor: pointer;
 }
 
-.menu .seccionMenu:hover{
+.menu .hover{
+    color: #ffffff;
+}
+
+.menu .hover:hover{
     color: #3b3b3b;
 }
 
@@ -43,7 +50,7 @@
     line-height: 35px;
     letter-spacing: 0em;
     cursor: pointer;
-    color: #ffffff;
+
     margin-bottom: 25px;
 }
 
@@ -73,15 +80,27 @@
     letter-spacing: 0em;
     text-align: left;
     margin-left: 15px;
+    color: white;
 }
 
 
 
 .menu-celular{
     background: linear-gradient(89.96deg, #F66B0A 0.03%, #FBB044 99.96%);
-    color: white;
-    padding: 25px;
+    
     font-size: 20px;
+    padding: 25px;
+    
+    
+}
+
+.menu-celular .icono{
+    color: white;
+    cursor: pointer;
+}
+
+.menu-celular .icono:hover{
+    color: #3b3b3b;
 }
 
 @media (min-width: 1200px) {
@@ -98,7 +117,7 @@
         display: none;
     }
     .infoPerfil {
-        left: 40%;
+        left: 35%;
     }
     .menu .icono{
         text-align: center;

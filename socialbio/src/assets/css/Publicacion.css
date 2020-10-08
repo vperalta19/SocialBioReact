@@ -1,0 +1,45 @@
+.publicacion{
+    border-radius: 25px;
+    border: 1px solid #000000;
+    background-color: white;
+    margin: 20px;
+}
+
+.publicacion .avatar{
+    width: 40px;
+    height: 40px;
+    border-radius:150px;
+    margin: 10px;
+}
+
+.publicacion .nombre{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: #000000;
+    float: left;
+
+}
+
+.publicacion .texto{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    color: #000000;
+    text-align: left;
+}
+
+.publicacion .fecha{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    color: #000000;
+    float: right;
+}
+
+.publicacion .imagen{
+    width: 100%;
+}

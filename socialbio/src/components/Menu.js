@@ -16,76 +16,71 @@ import './../assets/css/Menu.css';
 export default function Menu(){
     return(
         <div>
-            <div className='container-fluid'>
+            <div className='col-2 col-xl-3 menu'>
                 <div className='row'>
-                    <div className='col-3 menu'>
-                        <div className='row'>
-                            <div className='col'>
-                                <img className='logo' src={logo} alt='logo'/>
-                            </div>
-                        </div>
-                        <div className="row text-left align-items-center">
-                            <div className='col-xl-3 col icono'>
-                                <FontAwesomeIcon icon={faHome}/>
-                            </div>
-                            <div className=' seccionMenu col-9'>
-                                <div>INICIO</div>
-                            </div>
-                        </div>
-                        <div className="row text-left align-items-center">
-                            <div className='col-xl-3 col icono'>
-                                <FontAwesomeIcon icon={faUser}/>
-                            </div>
-                            <div className=' seccionMenu col-9'>
-                                <div>PERFIL</div>
-                            </div>
-                        </div>
-                        <div className="row text-left align-items-center">
-                            <div className='col-xl-3 col icono'>
-                                <FontAwesomeIcon icon={faSearch}/>
-                            </div>
-                            <div className=' seccionMenu col-9'>
-                                <div>EXPLORAR</div>
-                            </div>
-                        </div>
-                        <div className="row text-left align-items-center">
-                            <div className='col-xl-3 col icono'>
-                                <FontAwesomeIcon icon={faBell}/>
-                            </div>
-                            <div className=' seccionMenu col-9'>
-                                <div>NOTIFICACIONES</div>
-                            </div>
-                        </div>
-                        <div className="row infoPerfil">
-                            <div className='col-xl-2 col avatar'>
-                                <FontAwesomeIcon icon={faUserCircle}/>
-                            </div>
-                            <div className='col-10 perfil'>
-                                <div className='nombre'>Juan Manuel Belgrano</div>
-                                <div className='usuario'>@jmbelgrano</div>
-                            </div>
-                            
-                        </div>
+                    <div className='col'>
+                        <img className='logo' src={logo} alt='logo'/>
                     </div>
-
+                </div>
+                <div className="row text-left align-items-center hover">
+                    <div className='col-xl-3 col icono'>
+                        <FontAwesomeIcon icon={faHome}/>
+                    </div>
+                    <div className=' seccionMenu col-9'>
+                        <div>INICIO</div>
+                    </div>
+                </div>
+                <div className="row text-left align-items-center hover">
+                    <div className='col-xl-3 col icono'>
+                        <FontAwesomeIcon icon={faUser}/>
+                    </div>
+                    <div className=' seccionMenu col-9'>
+                        <div>PERFIL</div>
+                    </div>
+                </div>
+                <div className="row text-left align-items-center hover">
+                    <div className='col-xl-3 col icono'>
+                        <FontAwesomeIcon icon={faSearch}/>
+                    </div>
+                    <div className=' seccionMenu col-9'>
+                        <div>EXPLORAR</div>
+                    </div>
+                </div>
+                <div className="row text-left align-items-center hover">
+                    <div className='col-xl-3 col icono'>
+                        <FontAwesomeIcon icon={faBell}/>
+                    </div>
+                    <div className=' seccionMenu col-9'>
+                        <div>NOTIFICACIONES</div>
+                    </div>
+                </div>
+                <div className="row infoPerfil">
+                    <div className='col-xl-2 col'>
+                        <FontAwesomeIcon icon={faUserCircle}/>
+                    </div>
+                    <div className='col-10 perfil'>
+                        <div className='nombre'>Manuel Belgrano</div>
+                        <div className='usuario'>@jmbelgrano</div>
+                    </div>
+                    
                 </div>
             </div>
             <footer>
                 <div className='container'>
                     <div class="row menu-celular fixed-bottom align-items-center">
-                        <div className='col'>
+                        <div className='col '>
                             <FontAwesomeIcon className='icono' icon={faHome}/>
                         </div>
-                        <div className='col'>
+                        <div className='col '>
                             <FontAwesomeIcon className='icono' icon={faUser}/>
                         </div>
-                        <div className='col'>
+                        <div className='col '>
                             <FontAwesomeIcon className='icono' icon={faPlusCircle}/>
                         </div>
-                        <div className='col'>
+                        <div className='col '>
                             <FontAwesomeIcon className='icono' icon={faSearch}/>
                         </div>
-                        <div className='col'>
+                        <div className='col '>
                             <FontAwesomeIcon className='icono' icon={faBell}/>
                         </div>
                         

@@ -1,0 +1,26 @@
+.caja{
+    background-color: #104D3B;
+    border-radius: 25px;
+    margin: 2px;
+    overflow:hidden;
+}
+
+.titulo{
+    background: linear-gradient(90deg, #0F4C3A 0%, #267153 100%);
+    
+}
+
+.titulo span{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+    color: white;
+    
+}
+
+@media (max-width: 1000px) {
+    .caja{
+        display: none;
+    }
+}
