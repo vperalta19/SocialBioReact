@@ -2,18 +2,24 @@ import React from 'react'
 import Avatar from './../assets/img/imagen-vectorial-compressor.jpg'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './../assets/css/Publicacion.css';
+import Like from './Like'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faComment} from '@fortawesome/free-solid-svg-icons'
 
 
 export default function Publicacion(){
     const publicacion={
         nombreUser: 'Manuel Belgrano',
         user: '@jmbelgrano',
-        img: './../assets/img/fondoIyRcelu.jpg'
-    }
+        img: './../assets/img/fondoIyRcelu.jpg',
+        like: false
+    };
+
     return(
         <div>
             <div className='row publicacion'>
-                <div className='col-1'>
+                <div className='col-1 p-0 m-0'>
                     <img src={Avatar} className='avatar' alt='imagen de perfil'></img>
                 </div>
                 <div className='col-11'>
@@ -21,7 +27,7 @@ export default function Publicacion(){
                         <div className='col p-0'>
                             <span className='nombre'>{publicacion.nombreUser} <span className='texto'>{publicacion.user}</span></span>
                         </div>
-                        <div>
+                        <div className= 'col d-none d-md-block'>
                             <span className='fecha'>05/10/2020</span>
                         </div>
                         
@@ -32,7 +38,16 @@ export default function Publicacion(){
                     <div className='row m-2'>
                         <img src={Avatar} className='imagen' alt='imagen'/>
                     </div>
-                    <div className='row m-2'></div>
+                    <div className='row like'>
+                        <div className='col-6 col-md-8'></div>
+                        
+                        <div className='col-3 col-md-2'>
+                            <Like/>
+                        </div>
+                        <div className='col-3 col-md-2 text-center'>
+                            <FontAwesomeIcon className='comment' icon={faComment}/>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

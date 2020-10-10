@@ -4,10 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './../assets/css/Derecha.css';
 
 export default function Sugerencias(){
-    const usuario={
-        nombreUser: 'Juan Manuel Belgrano',
-        user: '@jmbelgrano'
-    }
     return(
         <div className='row caja'>
             <div className='col'>

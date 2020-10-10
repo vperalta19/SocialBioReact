@@ -14,7 +14,9 @@ function App() {
           <div className='col'>
             <Menu></Menu>
           </div>
-          <div className='col-6'>
+          <div className='col-lg-6 col-md-10 col-12 mb-5'>
+            <Publicacion></Publicacion>
+            <Publicacion></Publicacion>
             <Publicacion></Publicacion>
           </div>
 

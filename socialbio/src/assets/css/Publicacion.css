@@ -42,4 +42,43 @@
 
 .publicacion .imagen{
     width: 100%;
+    max-height: auto;
+}
+
+.like{
+    height: 50px;
+}
+
+.disable-selection{
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer */
+    -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+    -webkit-user-select: none; /* Chrome, Safari, and Opera */
+    -webkit-touch-callout: none;
+}
+
+.dckAxC{
+    position: absolute;
+    top: -30px;
+    left: 0;
+    margin-right: 5px;
+}
+
+.jKRSSX{
+    position: absolute;
+    top: -30px;
+    left: 0;
+    margin-right: 5px;
+}
+
+.comment{
+    font-size: 30px;
+    margin-top: 5px;
+    float: left;
+    color: #A7B8C3;
+    cursor: pointer;
+}
+
+.comment:hover{
+    color: #949494;
 }
