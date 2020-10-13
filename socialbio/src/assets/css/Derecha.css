@@ -1,3 +1,12 @@
+.seccionDerecha{
+    height: 100%;
+    z-index: 1;
+    position: fixed;
+    overflow: auto;
+    right: 0;
+    left: 75%;
+}
+
 .caja{
     background-color: #104D3B;
     border-radius: 25px;
@@ -19,8 +28,8 @@
     
 }
 
-@media (max-width: 1000px) {
-    .caja{
+@media (max-width: 1200px) {
+    .seccionDerecha{
         display: none;
     }
 }

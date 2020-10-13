@@ -2,14 +2,8 @@
     border-radius: 25px;
     border: 1px solid #000000;
     background-color: white;
-    margin: 20px;
-}
-
-.publicacion .avatar{
-    width: 40px;
-    height: 40px;
-    border-radius:150px;
     margin: 10px;
+
 }
 
 .publicacion .nombre{
@@ -22,10 +16,16 @@
 
 }
 
+.textoCorto{
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+
 .publicacion .texto{
     font-style: normal;
     font-weight: normal;
-    font-size: 10px;
+    font-size: 12px;
     line-height: 12px;
     color: #000000;
     text-align: left;
@@ -45,40 +45,39 @@
     max-height: auto;
 }
 
-.like{
-    height: 50px;
-}
-
-.disable-selection{
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer */
-    -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
-    -webkit-user-select: none; /* Chrome, Safari, and Opera */
-    -webkit-touch-callout: none;
-}
-
-.dckAxC{
-    position: absolute;
-    top: -30px;
-    left: 0;
-    margin-right: 5px;
-}
-
-.jKRSSX{
-    position: absolute;
-    top: -30px;
-    left: 0;
-    margin-right: 5px;
+.interacciones{
+    margin-bottom: 5px;
 }
 
 .comment{
-    font-size: 30px;
-    margin-top: 5px;
-    float: left;
-    color: #A7B8C3;
+    font-size: 1.5em;
+    color: #104D3B;
     cursor: pointer;
 }
 
 .comment:hover{
-    color: #949494;
+    color: #092c22;
 }
+
+.heart{
+    font-size: 1.5em;
+    color: #104D3B;
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer */
+    -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+    -webkit-user-select: none; /* Chrome, Safari, and Opera */
+    -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+    cursor: pointer;
+}
+
+@keyframes beat{
+	to { transform: scale(1.4); }
+}
+
+.isLiked{
+    color: #F44336;
+    animation: beat .25s alternate 2;
+	transform-origin: center;
+}
+
+

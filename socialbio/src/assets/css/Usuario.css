@@ -2,7 +2,12 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    
 }
+.seguir:focus {
+    outline: none;
+  }
+
 
 .user{
     background: #FFFFFF;
@@ -12,12 +17,7 @@
     
 }
 
-.avatar{
-    width: 40px;
-    height: 40px;
-    border-radius:150px;
-    margin: 10px;
-}
+
 
 .nombreUsuario{
     font-style: normal;
@@ -25,7 +25,9 @@
     font-size: 12px;
     line-height: 15px;
     color: #000000;
-
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
 }
 
 .usuario{
@@ -33,35 +35,13 @@
     font-weight: normal;
     font-size: 10px;
     line-height: 12px;
-
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
     color: #000000;
 }
 
-.seguir{
-    background: linear-gradient(90deg, #F66C0B 0%, #FBAE43 96.79%);
-    border-radius: 15px;
-    color: white;
-    width: 90%;
-    height: 20px;
-    cursor: pointer;
-    border: none;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 12px;
-}
 
 
 
-.seguir:hover{
-    border: 1px solid transparent;
-    align-self: center;
-    background: white;
-    border-color: #F66C0B;
-    color: #F66C0B;
-}
 
-
-.p-0{
-    padding: 0;
-}

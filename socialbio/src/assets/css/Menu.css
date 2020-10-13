@@ -5,12 +5,12 @@
 }
 
 .menu {
-    width: 300px;
+    width: 220px;
     height: 100%;
     z-index: 1;
     background: linear-gradient(180deg, #F66A09 0%, #FBB044 100%);
     position: fixed;
-    overflow: auto;
+    overflow: hidden;
     left: 0;
 }
 
@@ -25,7 +25,7 @@
 
 
 .menu .seccionMenu{
-    font-size: 20px;
+    font-size: 15px;
     font-style: normal;
     font-weight: 700;
     line-height: 35px;
@@ -91,13 +91,14 @@
     
     font-size: 20px;
     padding: 25px;
-    
+    text-align: center;
     
 }
 
 .menu-celular .icono{
     color: white;
     cursor: pointer;
+    margin: 5px;
 }
 
 .menu-celular .icono:hover{
@@ -127,13 +128,13 @@
 
 }
 
-@media (min-width: 768px) {
+@media (min-width: 767px) {
     .menu-celular{
         display: none;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .menu{
       display:none;
     }

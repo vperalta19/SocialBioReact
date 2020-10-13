@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Avatar from './../assets/img/imagen-vectorial-compressor.jpg'
 import logo from './../assets/img/logoblanco.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faHome} from '@fortawesome/free-solid-svg-icons'
@@ -7,7 +7,6 @@ import {faUser} from '@fortawesome/free-solid-svg-icons'
 import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import {faBell} from '@fortawesome/free-solid-svg-icons'
 import {faPlusCircle} from '@fortawesome/free-solid-svg-icons'
-import {faUserCircle} from '@fortawesome/free-regular-svg-icons'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './../assets/css/Menu.css';
@@ -55,8 +54,8 @@ export default function Menu(){
                     </div>
                 </div>
                 <div className="row infoPerfil">
-                    <div className='col-xl-2 col'>
-                        <FontAwesomeIcon icon={faUserCircle}/>
+                    <div className='col-xl-2 col p-0'>
+                        <img src={Avatar} className='avatar' alt='imagen de perfil'></img>
                     </div>
                     <div className='col-10 perfil'>
                         <div className='nombre'>Manuel Belgrano</div>

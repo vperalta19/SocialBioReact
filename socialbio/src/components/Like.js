@@ -1,13 +1,29 @@
-import React, { useState } from "react";
-import Heart from "react-animated-heart";
-import './../assets/css/Publicacion.css';
+import React from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faHeart} from '@fortawesome/free-solid-svg-icons'
+import './../assets/css/Publicacion.css'
 
-export default function Like() {
-    const [isClick, setClick] = useState(false); //EL BOOLEANO ES LO QUE TRAIGO DEL BACK
-    return (
-      <div className='like disable-selection'>
-        <Heart isClick={isClick} onClick={() => setClick(!isClick)} />
+export default class Like extends React.Component{
+  constructor(props){
+		super();
+		this.state={
+			isLiked: false
+		}
+	}
+
+	handleClick(){
+		this.setState({
+			isLiked: !this.state.isLiked
+		})
+	}
+
+
+  render(){
+    return(
+      <div>
+        <FontAwesomeIcon onClick={this.handleClick.bind(this)} className={'heart ' + (this.state.isLiked ? 'isLiked' : '')} icon={faHeart}/>
       </div>
-    );
+    )
   }
-
+  
+}

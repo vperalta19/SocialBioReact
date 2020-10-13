@@ -8,7 +8,7 @@ export default function Sugerencias(){
         <div className='row caja'>
             <div className='col'>
                 <div className='row titulo'>
-                    <div className='col'>
+                    <div className='col text-center'>
                         <span>Sugerencias</span>
                     </div>
                     

@@ -1,38 +1,92 @@
-.App {
-  text-align: center;
+
+
+.btnNaranjaInvertido:focus {
+  outline: none;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.btnNaranja:focus {
+  outline: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.btnVerde:focus {
+  outline: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.btnVerdeInvertido:focus {
+  outline: none;
+}
+
+.avatar{
+  width: 40px;
+  height: 40px;
+  border-radius:150px;
+  margin: 10px;
+}
+
+.publicaciones{
+  margin-bottom: 75px;
+}
+
+.btnNaranja{
+  background: linear-gradient(90deg, #F66C0B 0%, #FBAE43 96.79%);
+  border-radius: 15px;
   color: white;
+  width: 100px;
+  height: 20px;
+  cursor: pointer;
+  border: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 12px;
 }
 
-.App-link {
-  color: #61dafb;
+
+
+.btnNaranjaInvertido{
+  border: 1px solid transparent;
+  align-self: center;
+  background: white;
+  border-color: #F66C0B;
+  color: #F66C0B;
+  border-radius: 15px;
+  width: 100px;
+  height: 20px;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 12px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.botonVerde{
+  background: linear-gradient(90deg, #104D3B 0%, #267053 100%);
+  border-radius: 15px;
+  color: white;
+  width: 100px;
+  height: 20px;
+  cursor: pointer;
+  border: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+
+
+.btnVerdeInvertido{
+  border: 1px solid transparent;
+  align-self: center;
+  background: white;
+  border-color: #236C50;
+  color: #236C50;
+  width: 100px;
+  height: 20px;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 12px;
 }

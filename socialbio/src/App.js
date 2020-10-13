@@ -1,28 +1,28 @@
 import React from 'react';
 import './App.css';
 import Menu from './components/Menu'
-import Sugerencias from './components/Sugerencias'
-import Popular from './components/Popular'
+import SeccionDerecha from './components/SeccionDerecha'
 import Publicacion from './components/Publicacion'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import PublicacionCompleta from './pages/PublicacionCompleta';
 
 function App() {
   return (
     <div className="App">
+      {/* <PublicacionCompleta></PublicacionCompleta> */}
       <div className='container-fluid'>
         <div className="row">
           <div className='col'>
             <Menu></Menu>
           </div>
-          <div className='col-lg-6 col-md-10 col-12 mb-5'>
-            <Publicacion></Publicacion>
-            <Publicacion></Publicacion>
-            <Publicacion></Publicacion>
+          <div className='col-xl-7 col-md-10 col-12 publicaciones'>
+            <Publicacion uso='publicacionCompleta'></Publicacion>
+            <Publicacion uso='feed'></Publicacion>
+            <Publicacion uso='feed'> </Publicacion>
           </div>
 
           <div className='col-3'>
-            <Popular></Popular>
-            <Sugerencias></Sugerencias>
+            <SeccionDerecha></SeccionDerecha>
           </div>
         </div>
       </div>
