@@ -1,0 +1,21 @@
+.nuevaPublicacion{
+    background-color: #E5E5E5;
+    border-radius: 20px;
+    text-align: center;
+  }
+  .titulosPublicacion{
+    color:#104D3B;
+    font-family: Roboto;
+    text-align: center;
+  }
+  .btnvolver{
+    float: left;
+  }
+  .btnseleccionar{
+      width: 100%;
+  }
+  .btnpublicar{
+      height: 30px;
+  }
+
+  

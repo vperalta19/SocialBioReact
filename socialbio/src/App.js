@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
-import Menu from './components/Menu'
-import SeccionDerecha from './components/SeccionDerecha'
-import Publicacion from './components/Publicacion'
+import Menu from './components/Menu';
+import SeccionDerecha from './components/SeccionDerecha';
+import Publicacion from './components/Publicacion';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PublicacionCompleta from './pages/PublicacionCompleta';
+import CategoriasBtn from "./components/CategoriasBtn";
+import CrearPublicacion from "./components/CrearPublicacion";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
             <Menu></Menu>
           </div>
           <div className='col-xl-7 col-md-10 col-12 publicaciones'>
+            <CrearPublicacion/>
+            
             <Publicacion uso='publicacionCompleta'></Publicacion>
             <Publicacion uso='feed'></Publicacion>
             <Publicacion uso='feed'> </Publicacion>
