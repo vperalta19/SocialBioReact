@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import PublicacionCompleta from './pages/PublicacionCompleta';
 import CategoriasBtn from "./components/CategoriasBtn";
 import CrearPublicacion from "./components/CrearPublicacion";
+import BioUsuario from './components/BioUsuario';
 
 function App() {
   return (
@@ -17,7 +18,11 @@ function App() {
           <div className='col'>
             <Menu></Menu>
           </div>
+          <div>
+            
+          </div>
           <div className='col-xl-7 col-md-10 col-12 publicaciones'>
+          <BioUsuario/>
             <CrearPublicacion/>
             
             <Publicacion uso='publicacionCompleta'></Publicacion>
