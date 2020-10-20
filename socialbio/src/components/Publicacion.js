@@ -1,12 +1,13 @@
 import React from 'react'
 import Avatar from './../assets/img/imagen-vectorial-compressor.jpg'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './../assets/css/Publicacion.css';
 import Like from './Like'
 import Comentarios from './Comentarios'
+import TresPuntitos from './TresPuntitos'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faComment} from '@fortawesome/free-solid-svg-icons'
+import {faEllipsisH} from '@fortawesome/free-solid-svg-icons'
 
 
 export default function Publicacion(props){
@@ -35,8 +36,8 @@ export default function Publicacion(props){
                             {(() => {
                                 if (!textoCorto){
                                     return (
-                                        <div className= 'col d-none d-md-block'>
-                                            <span className='fecha'>05/10/2020</span>
+                                        <div className= 'd-none d-md-block'>
+                                            <TresPuntitos></TresPuntitos>
                                         </div>
                                     )
                                 }

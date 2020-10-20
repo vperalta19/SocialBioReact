@@ -16,7 +16,7 @@ function App() {
             <Menu></Menu>
           </div>
           <div className='col-xl-7 col-md-10 col-12 publicaciones'>
-            <Publicacion uso='publicacionCompleta'></Publicacion>
+            <Publicacion uso='feed'></Publicacion>
             <Publicacion uso='feed'></Publicacion>
             <Publicacion uso='feed'> </Publicacion>
           </div>
