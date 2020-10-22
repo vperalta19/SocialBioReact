@@ -21,7 +21,8 @@
 .imagenUser{
     width: 90px;
     height: 90px;
-    border-radius: 150px
+    border-radius: 150px;
+    margin-top:10px;
 }
 .bioUser{
     line-height: 15px;

@@ -1,0 +1,28 @@
+.texto{
+    font-size: 20px;
+    margin-bottom: 50px;
+  }
+  .ior{
+    position: relative;
+    margin-top: 60px;
+    font-family: "Roboto", bold;
+    color: #123b2b;
+}
+.div{
+    text-align: center;
+}
+.btn-registrarse a {
+    background: linear-gradient(to right, #277254, #133829);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 50px;
+    padding: 10px 50px;
+    font-family: "Roboto", thick;
+    width: 100%;
+}
+.btn-registrarse{
+    margin-top: 30px;
+}
+.btn-registrarse a:hover{
+    background: linear-gradient(to right, #3da87d, #17533b);
+}
