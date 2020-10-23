@@ -7,92 +7,110 @@ import TresPuntitos from './TresPuntitos'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faComment} from '@fortawesome/free-solid-svg-icons'
-import {faEllipsisH} from '@fortawesome/free-solid-svg-icons'
 
 
-export default function Publicacion(props){
-    var {uso} = props;
-    var textoCorto = false;
-    if(uso==='sugerencia'){
-        textoCorto =true;
-    }
-    const publicacion={
-        nombreUser: 'Manuel Belgrano',
-        user: '@jmbelgrano'
+export default class Publicacion extends React.Component{
+    constructor(props){
+        super()
+        var publicacion = this.props;
+        this.state={
+            uso: publicacion.uso,
+            nombreUser: publicacion.nombreUser,
+            user: publicacion.user,
+            textoCorto: false,
+            comentarios: publicacion.cantComentarios,
+            likes: publicacion.cantLikes,
+            descripcion: publicacion.descripcion,
+            imagen: publicacion.imagen,
+        }
     };
 
-    return(
-        <div>
-            <div className='row publicacion'>
-                <div className='col-1 p-0 m-0'>
-                    <img src={Avatar} className='avatar' alt='imagen de perfil'></img>
-                </div>
-                <div className='col-11 '>
-                    <div className='row m-2'>
-                        <div className='col p-0'>
-                            <span className='nombre'>{publicacion.nombreUser} <span className='texto'>{publicacion.user}</span></span>
-                        </div>
-                        
-                            {(() => {
-                                if (!textoCorto){
-                                    return (
-                                        <div className= 'd-none d-md-block'>
-                                            <TresPuntitos></TresPuntitos>
-                                        </div>
-                                    )
-                                }
-                                return null;
-					        })()}
-                        
-                        
-                    </div>   
-                    <div className='row m-2'>
-                        <span className={'texto ' + (textoCorto ? 'textoCorto' : '') }>Eiusmod esse irure sint sint occaecat labore velit amet laboris dolore duis proident laboris pariatur. Sunt excepteur sunt dolore et minim duis consectetur amet voluptate elit eiusmod. Ad nulla aliqua sunt reprehenderit eiusmod incididunt. Anim amet mollit deserunt amet anim magna ea minim nostrud ex voluptate sint. Esse dolore id id laborum ut pariatur elit fugiat consectetur deserunt laboris. Dolor enim do elit cillum magna excepteur in minim velit elit et. Ullamco ipsum proident laborum nisi amet enim.</span>
-                    </div>
-                    <div className='row m-2'>
-                        <img src={Avatar} className='imagen' alt='imagen'/>
-                    </div>
+    textoCorto(){
+        if (this.state.uso === 'sugerencia'){
+            this.setState({
+                uso: true
+            })
+        }
+    }
 
-                    {(() => {
-                        if (!textoCorto){
-                            return (
-                                <div className='row p-0 interacciones'>
-                                    <div className='col-md-8 col-7'></div>
-                                    
-                                    <div className='col-2'>
-                                        <span className='cantInteraccion'>500</span><br/>
-                                        <Like/>
+    componentDidMount(){
+        this.textoCorto();
+    }
+
+    render(){
+        return(
+            <div>
+                <div className='row publicacion'>
+                    <div className='col-1 p-0 m-0'>
+                        <img src={Avatar} className='avatar' alt='imagen de perfil'></img>
+                    </div>
+                    <div className='col-11 '>
+                        <div className='row m-2'>
+                            <div className='col p-0'>
+                                <span className='nombre'>{this.state.nombreUser} <span className='texto'>{this.state.user}</span></span>
+                            </div>
+                            
+                                {(() => {
+                                    if (!this.state.textoCorto){
+                                        return (
+                                            <div className= 'd-none d-md-block'>
+                                                <TresPuntitos></TresPuntitos>
+                                            </div>
+                                        )
+                                    }
+                                    return null;
+                                })()}
+                            
+                            
+                        </div>   
+                        <div className='row m-2'>
+                            <span className={'texto ' + (this.state.textoCorto ? 'textoCorto' : '') }>{this.state.descripcion}</span>
+                        </div>
+                        <div className='row m-2'>
+                            <img src={Avatar} className='imagen' alt='imagen'/>
+                        </div>
+
+                        {(() => {
+                            if (!this.state.textoCorto){
+                                return (
+                                    <div className='row p-0 interacciones'>
+                                        <div className='col-md-8 col-7'></div>
+                                        
+                                        <div className='col-2'>
+                                            <span className='cantInteraccion'>{this.state.comentarios}</span><br/>
+                                            <Like/>
+                                        </div>
+                                        <div className='col-2 text-center'>
+                                            <span className='cantInteraccion'>{this.state.likes}</span><br/>
+                                            <FontAwesomeIcon className='comment' icon={faComment}/>
+                                        </div>
                                     </div>
-                                    <div className='col-2 text-center'>
-                                        <span className='cantInteraccion'>50</span><br/>
-                                        <FontAwesomeIcon className='comment' icon={faComment}/>
-                                    </div>
-                                </div>
-                            )
-                        }
+                                )
+                            }
+                            
+                            return null;
+                        })()}
                         
-                        return null;
-					})()}
+                    </div>
+                    {(() => {
+                            if (this.state.uso === 'publicacionCompleta'){
+                                return (
+                                    <div className='col-12'>
+                                        <Comentarios/>
+                                        <Comentarios/>
+                                        <Comentarios/>
+                                        <Comentarios/>
+                                        <Comentarios/>
+                                    </div>
+                                )
+                            }
+                            
+                            return null;
+                        })()}
                     
                 </div>
-                {(() => {
-                        if (uso === 'publicacionCompleta'){
-                            return (
-                                <div className='col-12'>
-                                    <Comentarios/>
-                                    <Comentarios/>
-                                    <Comentarios/>
-                                    <Comentarios/>
-                                    <Comentarios/>
-                                </div>
-                            )
-                        }
-                        
-                        return null;
-					})()}
-                
             </div>
-        </div>
-        
-    )
+            
+        )
+    }
 }
