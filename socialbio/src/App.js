@@ -1,65 +1,32 @@
 import React from 'react';
 import './App.css';
-import Menu from './components/Menu'
-import SeccionDerecha from './components/SeccionDerecha'
-import Publicacion from './components/Publicacion'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import	{BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
+import InicioSesion from './pages/InicioSesion';
+import Inicio from './pages/Inicio';
+import Home from './pages/Home';
+import Registrarse from './pages/Registrarse';
 import PublicacionCompleta from './pages/PublicacionCompleta';
 
-import {getInicio} from './services/apiRoutes'
-import { Spinner } from 'react-bootstrap';
-
-class App extends React.Component {
-  constructor(props){
-    super();
-    this.state = {
-      inicio: []
-    }
-  }
-
-  async getPublis(){
-    const publi = await getInicio('vaperalta')
-    this.setState({
-      inicio: publi
-    })
-  }
-
-  componentDidMount(){
-    this.getPublis();
-  }
+export default class App extends React.Component {
   
   render(){
     return (
       <div className="App">
-        {
-          this.state.inicio.map(
-              (value, index)=>{
-                  return(
-                    <Publicacion key={index} uso='feed' ></Publicacion>
-                  )
-              }
-          )
-        }
-        {/* <PublicacionCompleta></PublicacionCompleta>
-        <div className='container-fluid'>
-          <div className="row">
-            <div className='col'>
-              <Menu></Menu>
-            </div>
-            <div className='col-xl-7 col-md-10 col-12 publicaciones'>
-              <Publicacion uso='feed'></Publicacion>
-              <Publicacion uso='feed'></Publicacion>
-              <Publicacion uso='feed'> </Publicacion>
-            </div>
-
-            <div className='col-3'>
-              <SeccionDerecha></SeccionDerecha>
-            </div>
+        <Router>
+          <div className="App">
+            <Switch>
+              <Route path='/' exact component={Inicio} />
+              <Route path='/InicioSesion'  component={InicioSesion} />
+              <Route path='/Registrarse'  component={Registrarse} />
+              <Route path='/Home'  component={Home} />
+              <Route path='/PublicacionCompleta' component={PublicacionCompleta} />
+              
+            </Switch>
           </div>
-        </div>*/}
+        </Router>
       </div> 
     );
   }
-}
 
-export default App;
+}

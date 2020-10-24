@@ -29,10 +29,8 @@
 
 .btnNaranja{
   background: linear-gradient(90deg, #F66C0B 0%, #FBAE43 96.79%);
-  border-radius: 15px;
+  border-radius: 25px;
   color: white;
-  width: 100px;
-  height: 20px;
   cursor: pointer;
   border: none;
   font-style: normal;
@@ -55,28 +53,27 @@
   cursor: pointer;
   font-style: normal;
   font-weight: normal;
-  font-size: 12px;
+  border-radius: 25px;
   line-height: 12px;
 }
 
 
-.botonVerde{
+.btnVerde{
   background: linear-gradient(90deg, #104D3B 0%, #267053 100%);
-  border-radius: 15px;
+  border-radius: 25px;
   color: white;
-  width: 100px;
-  height: 20px;
   cursor: pointer;
-  border: none;
+  border: none transparent;
   font-style: normal;
   font-weight: normal;
-  font-size: 12px;
+  
   line-height: 12px;
 }
 
 
 
 .btnVerdeInvertido{
+  border-radius: 25px;
   border: 1px solid transparent;
   align-self: center;
   background: white;
@@ -87,6 +84,5 @@
   cursor: pointer;
   font-style: normal;
   font-weight: normal;
-  font-size: 12px;
   line-height: 12px;
 }

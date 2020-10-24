@@ -1,7 +1,5 @@
 var mysql = require('mysql');
 
-
-
 var express = require('express');
 var app = express();
 
@@ -47,12 +45,10 @@ app.post('/registrar', function(req,res){
                 registrar.nombre, 
                 registrar.apellido, 
                 registrar.usuario, 
-                registrar.contraseña, 
-                registrar.biografia, 
-                registrar.fotoPerfil, 
+                registrar.contraseña,
                 registrar.email
             ];
-            con.query('INSERT INTO Usuarios (nombre, apellido, usuario, contraseña, biografia, fotoPerfil, email) VALUES (?,?,?,?,?,?,?)', usuarioArray, function(err,result){
+            con.query('INSERT INTO Usuarios (nombre, apellido, usuario, contraseña, email) VALUES (?,?,?,?,?)', usuarioArray, function(err,result){
                 if(err){
                     throw err;
                 }

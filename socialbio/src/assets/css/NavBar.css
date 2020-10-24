@@ -1,0 +1,19 @@
+.navbar{
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(89.96deg, #F66B0A 0.03%, #FBB044 99.96%);
+    margin:0;
+    padding:10px;
+    list-style:none; 
+    position: sticky;
+}
+.top {
+ text-decoration: none;
+ display:inline;
+}
+.headertop{ 
+  text-align: right;
+  width:580px;
+  margin:0 auto;
+}
+
