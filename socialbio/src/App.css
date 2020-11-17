@@ -1,4 +1,7 @@
 
+*:focus{
+  outline: none;
+}
 
 .btnNaranjaInvertido:focus {
   outline: none;
@@ -21,6 +24,7 @@
   height: 40px;
   border-radius:150px;
   margin: 10px;
+  background-size: cover;
 }
 
 .publicaciones{

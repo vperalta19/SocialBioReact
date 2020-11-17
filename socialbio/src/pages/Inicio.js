@@ -5,7 +5,9 @@ import Logo from "./../assets/img/logo.png"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './../assets/css/Inicio.css'
 
-class Inicio extends React.Component{
+import {Link} from 'react-router-dom'
+
+export default class Inicio extends React.Component{
     render(){
         return(
             <div className="container-fluid fondo login">
@@ -17,8 +19,8 @@ class Inicio extends React.Component{
                             reciclaje o el zero-waste, aqui compartimos un modo de vida sustentable en el que todos compartimos 
                             y nos ayudamos!
                         </p>
-                        <button className='btnNaranja btnInicioSesion'>Iniciar Sesion</button>
-                        <button className="btnVerde btnRegistrar">Registrarse</button>
+                        <Link to='/InicioSesion'><button className='btnNaranja btnInicioSesion'>Iniciar Sesion</button></Link>
+                        <Link to='/Registrarse'><button className="btnVerde btnRegistrar">Registrarse</button></Link>
 
                     </div>
                 </div>
@@ -27,7 +29,7 @@ class Inicio extends React.Component{
         )
     }
 }
-export default Inicio;
+
 
 //<button className='btnNaranja btnInicioSesion'>Iniciar Sesion</button>
 //<button className="btnVerde btnRegistrar">Registrarse</button>

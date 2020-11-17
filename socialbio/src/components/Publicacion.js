@@ -1,6 +1,6 @@
 import React from 'react'
-import Avatar from './../assets/img/imagen-vectorial-compressor.jpg'
-import './../assets/css/Publicacion.css';
+import Avatar from './../assets/img/avatar.jpg'
+
 import Like from './Like'
 import Comentarios from './Comentarios'
 import TresPuntitos from './TresPuntitos'
@@ -8,20 +8,26 @@ import TresPuntitos from './TresPuntitos'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faComment} from '@fortawesome/free-solid-svg-icons'
 
+import ImageLoader from 'react-image-file';
+
+
+import imagen from '../assets/img/imagen-vectorial-compressor.jpg'
+import './../assets/css/Publicacion.css';
+
 
 export default class Publicacion extends React.Component{
     constructor(props){
         super()
-        var publicacion = this.props;
         this.state={
-            uso: publicacion.uso,
-            nombreUser: publicacion.nombreUser,
-            user: publicacion.user,
+            uso: props.uso,
+            nombreUser: 'Juan Manuel Belgrano',
+            user: 'jmbelgrano',
             textoCorto: false,
-            comentarios: publicacion.cantComentarios,
-            likes: publicacion.cantLikes,
-            descripcion: publicacion.descripcion,
-            imagen: publicacion.imagen,
+            comentarios: '50',
+            likes: '10',
+            descripcion: 'loremsdckbaiuawcsjkkandsbkj',
+            imagen: {imagen},
+            avatar: {imagen}
         }
     };
 
@@ -31,10 +37,29 @@ export default class Publicacion extends React.Component{
                 uso: true
             })
         }
+        else{
+            this.setState({
+                uso: false
+            })
+        }
     }
 
     componentDidMount(){
         this.textoCorto();
+        
+        // var {publicacion} = this.props;
+
+        // var {uso} = this.props
+        // this.setState({
+        //     uso: uso,
+        //     nombreUser: publicacion.Nombre + ' '+ publicacion.Apellido,
+        //     user: '@'+publicacion.usuario,
+        //     comentarios: publicacion.cantComentarios,
+        //     likes: publicacion.cantLikes,
+        //     descripcion: publicacion.descripcion,
+        //     imagen: publicacion.imagen,
+        //     avatar: publicacion.fotoPerfil
+        // });
     }
 
     render(){
@@ -42,7 +67,19 @@ export default class Publicacion extends React.Component{
             <div>
                 <div className='row publicacion'>
                     <div className='col-1 p-0 m-0'>
-                        <img src={Avatar} className='avatar' alt='imagen de perfil'></img>
+                        {(() => {
+                            if (!this.state.avatar){
+                                return (
+                                    <ImageLoader file={this.state.avatar} className='avatar' alt='imagen de perfil'/>
+                                )
+                            }
+                            else{
+                                return (
+                                    <ImageLoader file={imagen} className='avatar' alt='imagen de perfil'/>
+                                )
+                            }
+                            
+                        })()}
                     </div>
                     <div className='col-11 '>
                         <div className='row m-2'>
@@ -67,7 +104,16 @@ export default class Publicacion extends React.Component{
                             <span className={'texto ' + (this.state.textoCorto ? 'textoCorto' : '') }>{this.state.descripcion}</span>
                         </div>
                         <div className='row m-2'>
-                            <img src={Avatar} className='imagen' alt='imagen'/>
+                            {/* {(() => {
+                                if (!this.state.imagen){
+                                    return ( */}
+                                        <img src={imagen} className='imagen' alt='imagen'/>
+                                    {/* )
+                                }
+                                
+                                return null;
+                            })()} */}
+                            
                         </div>
 
                         {(() => {

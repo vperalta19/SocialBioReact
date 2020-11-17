@@ -172,33 +172,64 @@ app.delete('/eliminarPublicacion/:idPublicacion', function(req,res){
 //API COMENTARIOS
 //----------------------------------------------------------------------------------------------------------------------------------------/
 
-app.post('/comentar', function(req,res){
-    var {comentario} = req.body;
-    var {idPublicacion} = req.body;
-    var {usuario} = req.body;
-    if(comentario === ""){
-        return res.send('Su comentario no puede estar vacio');
-    }
-    else{
-        var comentarioArray = [
-            comentario,
-            idPublicacion,
-            usuario,
-        ];
-        con.query('INSERT INTO Comentarios (comentario,publicacion,usuario, fecha) VALUES (?,?,?, NOW())', comentarioArray, function(err,result){
-            if(err){
-                throw err;
-            }
-            else{
-                comentarioArray.shift();
-                comentarioArray.push('comentario',result.insertId);
-                res.send(notificaciones(comentarioArray));
-            }
-        })
+app.post('/comentar', (req, res) => {
+        var { comentario } = req.body;
+        var { idPublicacion } = req.body;
+        var { usuario } = req.body;
+        if (comentario === "") {
+            return res.send('Su comentario no puede estar vacio');
+        }
+        else {
+            var comentarioArray = [
+                comentario,
+                idPublicacion,
+                usuario,
+            ];
+            con.query('INSERT INTO Comentarios (comentario,publicacion,usuario, fecha) VALUES (?,?,?, NOW())', comentarioArray, function (err, result) {
+                if (err) {
+                    throw err;
+                }
+                else {
+                    comentarioArray.shift();
+                    comentarioArray.push('comentario', result.insertId);
+                    res.send(notificacionesComentarios(comentarioArray));
+
+                    
+                }
+            });
+
+
+        }
+    });
+
+function notificacionesComentarios(notiArray){
+    con.query('SELECT usuario FROM Publicaciones WHERE idPublicaciones = ?', notiArray[0], function(err,row,field){
+        if(err){
+            throw err;
+        }
+        else{
+            var usuarioNotificacion= row[0].usuario;
+
+            notiArray.push(usuarioNotificacion)
+            
+            con.query('INSERT INTO Notificaciones (publicacion, usuarioInteraccion,interaccion,idInteraccion , usuarioNotificacion, fecha) VALUES (?,?,?,?,?,NOW())', notiArray, function(err,result){
+                if(err){
+                    throw err;
+                }
+                else{
+                    con.query('UPDATE Publicaciones SET cantComentarios = cantComentarios + 1 WHERE usuario = ? AND idPublicaciones = ?',[usuarioNotificacion, notiArray[0]], function(err,result){
+                        if(err){
+                            throw err;
+                        }
+                        return true
+                    });
+                }
+            });
+        }
         
-        
-    } 
-});
+    });
+}
+
 
 app.delete('/eliminarComentario/:idComentario', function(req,res){
     var comentario = req.params.idComentario;
@@ -206,12 +237,25 @@ app.delete('/eliminarComentario/:idComentario', function(req,res){
         if(err){
             throw err;
         }
-        con.query('DELETE FROM Notificaciones WHERE idInteraccion = ?', comentario, function(err,result){
+        
+        con.query('SELECT usuarioNotificacion, publicacion FROM Notificaciones WHERE idInteraccion = ?',comentario, function(err,resultado){
             if(err){
                 throw err;
             }
-            res.send('se elimino correctamente');
+            con.query('UPDATE Publicaciones SET cantComentarios = cantComentarios - 1 WHERE usuario = ? AND idPublicaciones = ? AND interaccion = "comentario"',[resultado[0].usuarioNotificacion, resultado[0].publicacion], function(err,result){
+                if(err){
+                    throw err;
+                }
+                con.query('DELETE FROM Notificaciones WHERE idInteraccion = ?', comentario, function(err,result){
+                    if(err){
+                        throw err;
+                    }
+                    res.send('se actualizo correctamente');
+                });
+            });
         });
+        
+        
     });
 });
 
@@ -246,7 +290,7 @@ app.post('/like', function(req,res){
                 }
                 else{
                     likeArray.push('like', result.insertId)
-                    res.send(notificaciones(likeArray));
+                    res.send(notificacionesLike(likeArray));
                 }
             });
         }
@@ -255,17 +299,55 @@ app.post('/like', function(req,res){
     
 });
 
+function notificacionesLike(notiArray){
+    con.query('SELECT usuario FROM Publicaciones WHERE idPublicaciones = ?', notiArray[0], function(err,row,field){
+        if(err){
+            throw err;
+        }
+        else{
+            var usuarioNotificacion= row[0].usuario;
+
+            notiArray.push(usuarioNotificacion)
+            
+            con.query('INSERT INTO Notificaciones (publicacion, usuarioInteraccion,interaccion,idInteraccion , usuarioNotificacion, fecha) VALUES (?,?,?,?,?,NOW())', notiArray, function(err,result){
+                if(err){
+                    throw err;
+                }
+                else{
+                    con.query('UPDATE Publicaciones SET cantLikes = cantLikes + 1 WHERE usuario = ? AND idPublicaciones = ?',[usuarioNotificacion, notiArray[0]], function(err,result){
+                        if(err){
+                            throw err;
+                        }
+                        return true
+                    });
+                }
+            });
+        }
+        
+    });
+}
+
 app.delete('/dislike/:idLike', function(req,res){
     con.query('DELETE FROM Likes WHERE idLikes = ?', req.params.idLike, function(err,result){
         if(err){
             throw err;
         }
         else{
-            con.query('DELETE FROM Notificaciones WHERE idInteraccion = ?', req.params.idLike, function(err,result){
+            con.query('SELECT usuarioNotificacion, publicacion FROM Notificaciones WHERE idInteraccion = ?',comentario, function(err,resultado){
                 if(err){
                     throw err;
                 }
-                res.send('se elimino correctamente');
+                con.query('UPDATE Publicaciones SET cantComentarios = cantComentarios - 1 WHERE usuario = ? AND idPublicaciones = ? ',[resultado[0].usuarioNotificacion, resultado[0].publicacion], function(err,result){
+                    if(err){
+                        throw err;
+                    }
+                    con.query('DELETE FROM Notificaciones WHERE idInteraccion = ?', comentario, function(err,result){
+                        if(err){
+                            throw err;
+                        }
+                        res.send('se actualizo correctamente');
+                    });
+                });
             });
         }
     });
@@ -370,8 +452,10 @@ app.get('/likesDelUsuario/:usuario/', function(req,res){
 //----------------------------------------------------------------------------------------------------------------------------------------//
 //API INICIO
 //----------------------------------------------------------------------------------------------------------------------------------------//
+
 app.get('/inicio/:usuario', function(req,res){
-    con.query('SELECT p.* FROM Publicaciones p, SyS s WHERE s.seguidor = ? and s.seguido = p.usuario', req.params.usuario ,function(err,result){
+    con.query('SELECT p.*, u.Nombre, u.Apellido, u.fotoPerfil FROM Publicaciones p, SyS s, Usuarios u WHERE s.seguidor = ? and s.seguido = p.usuario and p.usuario = u.usuario', 
+                req.params.usuario ,function(err,result){
         if(err){
             throw err;
         }
@@ -381,7 +465,7 @@ app.get('/inicio/:usuario', function(req,res){
 
 app.get('/inicio/:usuario/:seccion', function(req,res){
     var inicio = [req.params.usuario, req.params.seccion]
-    con.query('SELECT p.* FROM Publicaciones p, SyS s WHERE s.seguidor = ? and s.seguido = p.usuario and p.seccion = ?', inicio ,function(err,result){
+    con.query('SELECT p.*, u.Nombre, u.Apellido, u.fotoPerfil FROM Publicaciones p, SyS s, Usuarios u WHERE s.seguidor = ? and s.seguido = p.usuario and p.seccion = ? and p.usuario = u.usuario', inicio ,function(err,result){
         if(err){
             throw err;
         }
@@ -393,7 +477,7 @@ app.get('/inicio/:usuario/:seccion', function(req,res){
 //API EXPLORAR
 //----------------------------------------------------------------------------------------------------------------------------------------//
 app.get('/explorar', function(req,res){
-    con.query('SELECT * FROM Publicaciones', req.params.usuario ,function(err,result){
+    con.query('SELECT p.*, u.Nombre, u.Apellido, u.fotoPerfil FROM Publicaciones p, Usuarios u WHERE p.usuario = u.usuario, req.params.usuario' ,function(err,result){
         if(err){
             throw err;
         }
@@ -402,7 +486,7 @@ app.get('/explorar', function(req,res){
 })
 
 app.get('/explorar/:seccion', function(req,res){
-    con.query('SELECT * FROM Publicaciones WHERE seccion = ?', req.params.seccion ,function(err,result){
+    con.query('SELECT p.*, u.Nombre, u.Apellido, u.fotoPerfil FROM Publicaciones p, Usuarios u WHERE seccion = ? and p.usuario = u.usuario', req.params.seccion ,function(err,result){
         if(err){
             throw err;
         }
@@ -531,28 +615,7 @@ app.get('/sugerencias', function(req,res){
 //----------------------------------------------------------------------------------------------------------------------------------------//
 //API NOTIFICACIONES
 //----------------------------------------------------------------------------------------------------------------------------------------//
-function notificaciones(notiArray){
-    con.query('SELECT usuario FROM Publicaciones WHERE idPublicaciones = ?', notiArray[0], function(err,row,field){
-        if(err){
-            throw err;
-        }
-        else{
-            var usuarioNotificacion= row[0].usuario;
 
-            notiArray.push(usuarioNotificacion)
-            
-            con.query('INSERT INTO Notificaciones (publicacion, usuarioInteraccion,interaccion,idInteraccion , usuarioNotificacion, fecha) VALUES (?,?,?,?,?,NOW())', notiArray, function(err,result){
-                if(err){
-                    throw err;
-                }
-                else{
-                    return true;
-                }
-            });
-        }
-        
-    });
-}
 
 app.get('/notificaciones', function(req,res){
     con.query('SELECT * FROM Notificaciones ORDER BY fecha' ,function(err,result){

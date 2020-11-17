@@ -1,37 +1,47 @@
 import React from 'react';
 
+import Menu from '../components/Menu'
+import SeccionDerecha from '../components/SeccionDerecha'
+
+import Publicacion from '../components/Publicacion'
+import {getInicio} from '../services/apiRoutes'
 
 export default class App extends React.Component {
-  // constructor(props){
-  //   super();
-  //   this.state = {
-  //     inicio: []
-  //   }
-  // }
+  constructor(props){
+    super();
+    this.state = {
+      inicio: []
+    }
+  }
 
-  // async getPublis(){
-  //   const publi = await getInicio('vaperalta')
-  //   this.setState({
-  //     inicio: publi
-  //   })
-  // }
+  async getPublis(){
+    const publi = await getInicio('vaperalta');
+    this.setState({
+      inicio: publi
+    })
+  }
 
-  // componentDidMount(){
-  //   this.getPublis();
-  // }
+  componentDidMount(){
+    this.getPublis();
+  }
   
   render(){
     return (
-      <div className="x">
-        {/* {
-          this.state.inicio.map(
-              (value, index)=>{
-                  return(
-                    <Publicacion key={index} uso='feed' ></Publicacion>
-                  )
-              }
-          )
-        } 
+      // <div className='container-fluid'>
+      //   <div className='row'>
+      //     <div className='col-xl-7 col-md-10 col-12 publicaciones'>
+      //       {
+      //         this.state.inicio.map(
+      //           (value, index)=>{
+      //               return(
+      //                   <Publicacion key = {index} publicacion = {value} uso='feed'/>
+      //               )
+      //           }
+      //         )
+      //       }
+      //     </div>
+      //   </div>
+        
         <div className='container-fluid'>
           <div className="row">
             <div className='col'>
@@ -47,8 +57,8 @@ export default class App extends React.Component {
               <SeccionDerecha></SeccionDerecha>
             </div>
           </div>
-        </div>*/}
-      </div> 
+        </div>
+      // </div> 
     );
   }
 

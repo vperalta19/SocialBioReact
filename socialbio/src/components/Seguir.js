@@ -18,7 +18,7 @@ export default class Seguir extends React.Component{
   render(){
     return(
       <div>
-        <button onClick={this.handleClick.bind(this)} className={(this.state.follow) ? 'btnNaranjaInvertido' : 'btnNaranja'}>{(this.state.follow) ? 'Siguiendo' : 'Seguir'}</button>
+        <button onClick={this.handleClick.bind(this)} className={(this.state.follow) ? 'btnNaranjaInvertido' : 'btnNaranja'} style={{width: '90%', height: '20px', fontSize: '10px'}}>{(this.state.follow) ? 'Siguiendo' : 'Seguir'} </button>
       </div>
     )
   }
