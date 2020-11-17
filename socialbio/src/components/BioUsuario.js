@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Avatar from './../assets/img/imagen-vectorial-compressor.jpg'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './../assets/css/BioUsuario.css';
+import Popup from "./Popup";
 
 export default function BioUsuario(){
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const togglePopup = () => {
+      setIsOpen(!isOpen);
+    }
 
     const BioUser={
         nombreUser: 'Manuel Belgrano',
@@ -26,6 +33,14 @@ export default function BioUsuario(){
             <div className='bioUser col-8 p-0 mt-1'>{BioUser.bio}</div>
         </div>
         <hr className="mt-4"width="100%" size="40" color="orange" noshade/> 
+
+        <div>
+         <button className="btn btncrearpublicacion btn-sm mt-2" type="button" value="Crear Publicacion" onClick={togglePopup}>Crear Publicacion</button>
+         {isOpen && (
+          <Popup handleClose={togglePopup}
+          />
+        )}
+        </div>
         </div>
     )
 }

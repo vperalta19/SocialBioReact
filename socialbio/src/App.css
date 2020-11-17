@@ -90,3 +90,7 @@
   font-weight: normal;
   line-height: 12px;
 }
+.inputFile{
+display: block;
+margin-top:10px;
+}
