@@ -20,39 +20,24 @@ import Usuario from './components/Usuario';
 function App() {
   return (
     <div className="App">
-      {/*<Inicio/>*/}
-    {/*  <Registrarse/>*/}
-    {/*  <InicioSesion/>*/}
-   {/* <BioUsuario/>*/}
-    {/*<SeleccionarImagen/>*/}
-    {/* <CrearPublicacion/>*/}
-      {/* <PublicacionCompleta></PublicacionCompleta> */}
-      <div className='container-fluid'>
+      <div className="conteiner">
+      <NavBar/>
         <div className="row">
-          <div className='col-1'>
-            <Menu></Menu>
+          
+          <div className="col-2">
+            <Menu/>
           </div>
-          <div className='col-12'>
-        {/*   <NavBar/>  */}
-         <NavBarSeguidoresYSeguidos/>
-          </div>
-         </div>  
-       
+          <div className="col-10">
+            <div className="row">
+              <div className="col-10">
+                <BioUsuario/>
+              </div>
+             
+                <SeccionDerecha/>
               
-        
-       <div className="row">
-           <div className='col-xl-7 col-md-10 col-12 publicaciones'>
-            {/*  <BioUsuario/>
-              <CrearPublicacion/>
-              <Publicacion uso='publicacionCompleta'></Publicacion>
-              <Publicacion uso='feed'></Publicacion>
-              <Publicacion uso='feed'> </Publicacion>*/}
-              <Usuario/>
             </div>
-           <div className=''>
-              <SeccionDerecha></SeccionDerecha>
-            </div>
-  </div>
+          </div>
+        </div>
       </div>
     </div>
   );

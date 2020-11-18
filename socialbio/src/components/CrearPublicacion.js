@@ -10,7 +10,7 @@ class CrearPublicacion extends React.Component{
 
     render(){
         return(    
-             <div className="col-12 col-sm-12 col-md-12 col-lg-12 nuevaPublicacion mt-2">
+             <div className="col-9 col-sm-9 col-md-12 col-lg-12 nuevaPublicacion mt-2">
                <button className="btn btneditar btn-sm d-inline btnvolver" type="button" name="button"> <FontAwesomeIcon icon={faArrowLeft}/>Volver</button>
                 <h2 className="d-inline titulosPublicacion">Crear Publicación</h2>
                 <h5 className="titulosPublicacion" >Seleccione que tipo de publicación quieres crear</h5>
