@@ -2,6 +2,7 @@
     background-color: #E5E5E5;
     border-radius: 20px;
     text-align: center;
+    z-index: 2;
   }
   .titulosPublicacion{
     color:#104D3B;
@@ -28,7 +29,7 @@
    
   .box {
     position: relative;
-    width: 90%;
+    width: 70%;
     margin: 0 auto;
     height: auto;
     margin-top: calc(100vh - 85vh - 20px);
@@ -37,6 +38,17 @@
     padding: 20px;
     border: 1px solid #999;
     overflow: auto;
+    margin-bottom: 300px;
   }
    
+  @media (max-width: 1000px) {
+    
+    h5{
+      font-size: 14px;
+    }
+    h2{
+      font-size: 24px;
+      
+    }
+}
   

@@ -27,15 +27,11 @@ function App() {
           <div className="col-2">
             <Menu/>
           </div>
-          <div className="col-10">
-            <div className="row">
-              <div className="col-10">
-                <BioUsuario/>
-              </div>
-             
-                <SeccionDerecha/>
-              
+          <div className="col-12 col-md-7">
+             <BioUsuario/> 
             </div>
+          <div className="col-3 seccionDerecha">
+            <SeccionDerecha/>
           </div>
         </div>
       </div>

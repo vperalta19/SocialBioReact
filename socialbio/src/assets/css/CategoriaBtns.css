@@ -94,11 +94,11 @@
     color:white;
   }
   
-@media(max-width:670px){
+@media(max-width:1005px){
 
   .btncategorias{
     font-size: 12px;
-    padding: 2px 25px;
+    padding: 2px 20px;
   }
 }
  

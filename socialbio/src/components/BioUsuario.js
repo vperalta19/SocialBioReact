@@ -30,7 +30,7 @@ export default function BioUsuario(){
             <div className='col-4'>
             <button class=" btn btneditar btn-sm" type="button" name="button">Editar Perfil</button>
             </div>
-            <div className='bioUser col-8 p-0 mt-1'>{BioUser.bio}</div>
+            <div className='bioUser col-9 p-0 mt-1'>{BioUser.bio}</div>
         </div>
         <hr className="mt-4"width="100%" size="40" color="orange" noshade/> 
 
