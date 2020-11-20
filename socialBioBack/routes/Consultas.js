@@ -10,7 +10,7 @@ const con = require('../Database');
 //----------------------------------------------------------------------------------------------------------------------------------------//
 
 router.get('/inicio/:usuario', function(req,res){
-    con.query('SELECT p.*, u.Nombre, u.Apellido, u.fotoPerfil FROM Publicaciones p, SyS s, Usuarios u WHERE s.seguidor = ? and s.seguido = p.usuario and p.usuario = u.usuario', 
+    con.query('SELECT p.*, u.nombre, u.apellido, u.fotoPerfil FROM Publicaciones p, SyS s, Usuarios u WHERE s.seguidor = ? and s.seguido = p.usuario and p.usuario = u.usuario', 
                 req.params.usuario ,function(err,result){
         if(err){
             throw err;

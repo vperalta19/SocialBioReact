@@ -1,104 +1,97 @@
-.btnseguir, .btnpublicar, .btnsiguiendo, .btncategorias, .btneditar, .btncrearpublicacion, .btnseleccionar {
-    box-shadow: 2px 2px 12px #888888;
-    border-radius: 60px;
-    opacity: 1;
-    transition: 0.3s;
-    font-family: "Roboto";
-    text-decoration: none;
+*:focus{
+  outline:none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+button{
+  border-radius:10px;
+  outline:none;
   }
+button:hover{
+  text-decoration: none;
+}
+
+.btncategorias {
+  background-color: white;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  transition: 0.1s;
+  width: 100%;
+  height: 60px;
+  font-size: 13px;
+}
   
-  .btncategorias{
-    background: white;
-    color: black;
-    border:1px solid #67BC52;
-    height: 50px;
-    font-size: 12px;
-    padding: 2px 35px;
-    
-  }
-  .btncategorias:hover {opacity: 0.8}
-  
-  .a{
-    border:1px solid black;
-  }
-  .b{
-    border:1px solid green;
-  }
-  .c{
-    border:1px solid yellow;
-  }
-  .imagenluz{
-    height: 22px;
-  }
-  .d{
-    border:1px solid blue;
-  }
-  .e{
-    border:1px solid red;
+.btncategorias:hover {
+  border: 3px solid
+}
+
+.a{
+  border: 1px solid #E8EAF6;
+}
+
+.seleccionado.a,.a:hover{
+  border: 3px solid #E8EAF6
+}
+
+.b{
+  border: 1px solid #67BC52;
+}
+
+.seleccionado.b,.b:hover{
+  border: 3px solid #67BC52
+}
+
+.c{
+  border: 1px solid #FFD983;
+}
+
+.seleccionado.c,.c:hover{
+  border: 3px solid #FFD983
+}
+
+.d{
+  border: 1px solid #84A9D9;
+}
+
+.seleccionado.d,.d:hover{
+  border: 3px solid #84A9D9
+}
+
+.e{
+  border: 1px solid #ED4C5C;
+}
+
+.seleccionado.e,.e:hover{
+  border: 3px solid #ED4C5C
+}
+
+.imagen{
+  width: 25px;
+}
+.imagenLuz{
+  width: 18px;
+}
+
+@media(max-width: 761px){
+  .btncategorias {
+    font-size: 10px;
+    height: 45px;
+    width: 100%;
   }
   .imagen{
-    width: 25px;
+    width: 20px;
   }
-  .imagenluz{
-    width: 18px;
-  }
-  
-  .btnpublicar{
-    background: linear-gradient(90deg, #F66C0B 0%, #FBAE43 96.79%);
-    border-radius: 15px;
-    color: white;
-    border:none;
-    padding: 2px 80px;
-  }
-  
-  .btnsiguiendo{
-    background: linear-gradient(90deg, #F66C0B 0%, #FBAE43 96.79%);
-    border-radius: 15px;
-    color: white;
-    border:none;
-    padding: 2px 30px;
-  }
-  
-  .btnseguir{
-    background: white;
-    border-radius: 15px;
-    color: #F7710F;
-    border:1px solid #F7710F;
-    padding: 2px 40px;
-  }
-  .btneditar{
-    background: white;
-    border-radius: 15px;
-    color: #236C50;
-    border:1px solid #236C50;
-    padding: 2px 20px;
-  
-  }
-  .fa-angle-double-left{
-    color: #236C50;
-    padding-right: 3px;
-  }
-  .btnseguir:active, .btnsiguiendo:active, .btnpublicar:active, .btncategorias:active, .btneditar:active, .btncrearpublicacion:active, .btnseleccionar:active {
-    transform: translateY(3px);
-  }
-  .btncrearpublicacion {
-    background: linear-gradient(90deg, #0F4C3A 0%, #267153 100%);
-    width: 100%;
-    border-radius: 15px;
-    color:white;
-  }
-  .btnseleccionar{
-    background: linear-gradient(90deg, #0F4C3A 0%, #267153 100%);
-    width: 70%;
-    border-radius: 15px;
-    color:white;
-  }
-  
-@media(max-width:670px){
-
-  .btncategorias{
-    font-size: 12px;
-    padding: 2px 25px;
+  .imagenLuz{
+    width: 13px;
   }
 }
- 
+  
+.btncrearpublicacion {
+  background: linear-gradient(90deg, #0F4C3A 0%, #267153 100%);
+  width: 100%;
+  border-radius: 15px;
+  color:white;
+}

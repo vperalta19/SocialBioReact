@@ -7,7 +7,8 @@ import Publicacion from './../components/Publicacion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 
-export default function publicacionCompleta() {
+export default class publicacionCompleta extends React.Component {
+  render(){
     return (
       <div>
         <div className='container-fluid'>
@@ -30,6 +31,7 @@ export default function publicacionCompleta() {
       </div>
     );
   }
-  
+}
+
 
   

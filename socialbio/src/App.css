@@ -3,6 +3,14 @@
   outline: none;
 }
 
+.floating-container{
+	background-color: white;
+	border-radius: 20px;
+	z-index: 2;
+	box-shadow: 0 0 10px -3px black;
+	overflow: hidden;
+}
+
 .btnNaranjaInvertido:focus {
   outline: none;
 }

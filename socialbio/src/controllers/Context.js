@@ -1,7 +1,9 @@
 import React from 'react';
 import UsuariosController from './UsuariosController';
+import PublicacionController from './PublicacionController';
 
 const globalState = {
+	PublicacionController: new PublicacionController(),
 	UsuariosController: new UsuariosController()
 };
 

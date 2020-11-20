@@ -3,9 +3,10 @@ const express = require('express');
 const router = express.Router();
 
 const con = require('../Database');
+const { cloudinary } = require('../services/img.service');
 //------------------------------------------------------------------------------------------------------------
 
-router.post('/publicar', function(req,res){
+router.post('/publicar', async function(req,res){
     var publicar = req.body;
     if(publicar.descripcion === "" && publicar.imagen === ""){
         return res.send('Debe agregar contenido a su publicacion');
@@ -14,16 +15,22 @@ router.post('/publicar', function(req,res){
         return res.send('Muy largo');
     }
     else{
+        var link = ''
+        if(!!publicar.imagen || !!publicar.imagen.length) {
+            let uploadResponse = await cloudinary.uploader.upload(publicar.imagen);
+            link = uploadResponse.secure_url;
+        }
         var publicacionArray = [
             publicar.seccion,
             publicar.descripcion,
-            publicar.imagen,
+            link,
             publicar.usuario
         ];
-        con.query('INSERT INTO Publicaciones (seccion,descripcion,imagen,usuario,fecha) VALUES (?,?,?,?,NOW())', publicacionArray, function(err,result){
+        con.query('INSERT INTO Publicaciones (seccion,descripcion,imagen,usuario,fecha,cantComentarios,cantLikes) VALUES (?,?,?,?,NOW(),"0","0")', publicacionArray, function(err,result){
             if(err){
                 throw err;
             }
+            res.status(200)
             res.send('publicacion insertada correctamente');
         });
     } 
