@@ -33,7 +33,7 @@ class SeleccionarImagen extends Component {
            onChange={this.onImageChange} 
           
            />
-          <img src={this.state.image} height="500"/>
+          {this.state.image && <img src={this.state.image} style={{minHeight:500}}/>}
            
           </div>
         </div>

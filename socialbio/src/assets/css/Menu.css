@@ -7,7 +7,6 @@
 .menu {
     width: 220px;
     height: 100%;
-    z-index: 1;
     background: linear-gradient(180deg, #F66A09 0%, #FBB044 100%);
     position: fixed;
     overflow: hidden;

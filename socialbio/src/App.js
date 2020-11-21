@@ -8,6 +8,7 @@ import Inicio from './pages/Inicio';
 import Home from './pages/Home';
 import Registrarse from './pages/Registrarse';
 import PublicacionCompleta from './pages/PublicacionCompleta';
+import Perfil from './pages/Perfil';
 
 
 export class App extends React.Component {
@@ -24,6 +25,7 @@ export class App extends React.Component {
               <Route path='/Registrarse'  component={Registrarse} />
               <Route path='/Home'  component={Home} />
               <Route path='/PublicacionCompleta' component={PublicacionCompleta} />
+              <Route path='/Perfil' component={Perfil} />
 						</Switch>
 					</div>
 				</Router>
