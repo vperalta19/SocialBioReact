@@ -18,7 +18,6 @@ export default class Popup extends React.Component {
     this.state = {
       categoria: '',
       descripcion: '',
-      imagen: '',
       fileInputState: '',
       previewSource: '',
       selectedFile: null,

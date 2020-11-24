@@ -10,7 +10,7 @@ const con = require('../Database');
 //----------------------------------------------------------------------------------------------------------------------------------------//
 
 router.get('/inicio/:usuario', function(req,res){
-    con.query('SELECT p.*, u.nombre, u.apellido, u.fotoPerfil FROM Publicaciones p, SyS s, Usuarios u WHERE s.seguidor = ? and s.seguido = p.usuario and p.usuario = u.usuario', 
+    con.query('SELECT p.*, u.nombre, u.apellido, u.fotoPerfil FROM Publicaciones p, SyS s, Usuarios u WHERE s.seguidor = ? and s.seguido = p.usuario and p.usuario = u.usuario ORDER BY fecha DESC', 
                 req.params.usuario ,function(err,result){
         if(err){
             throw err;
@@ -21,7 +21,7 @@ router.get('/inicio/:usuario', function(req,res){
 
 router.get('/inicio/:usuario/:seccion', function(req,res){
     var inicio = [req.params.usuario, req.params.seccion]
-    con.query('SELECT p.*, u.Nombre, u.Apellido, u.fotoPerfil FROM Publicaciones p, SyS s, Usuarios u WHERE s.seguidor = ? and s.seguido = p.usuario and p.seccion = ? and p.usuario = u.usuario', inicio ,function(err,result){
+    con.query('SELECT p.*, u.nombre, u.apellido, u.fotoPerfil FROM Publicaciones p, SyS s, Usuarios u WHERE s.seguidor = ? and s.seguido = p.usuario and p.seccion = ? and p.usuario = u.usuario ORDER BY fecha DESC' , inicio ,function(err,result){
         if(err){
             throw err;
         }
@@ -33,7 +33,7 @@ router.get('/inicio/:usuario/:seccion', function(req,res){
 //API EXPLORAR
 //----------------------------------------------------------------------------------------------------------------------------------------//
 router.get('/explorar', function(req,res){
-    con.query('SELECT p.*, u.Nombre, u.Apellido, u.fotoPerfil FROM Publicaciones p, Usuarios u WHERE p.usuario = u.usuario, req.params.usuario' ,function(err,result){
+    con.query('SELECT p.*, u.nombre, u.apellido, u.fotoPerfil FROM Publicaciones p, Usuarios u WHERE p.usuario = u.usuario ORDER BY fecha DESC', req.params.usuario ,function(err,result){
         if(err){
             throw err;
         }
@@ -42,7 +42,7 @@ router.get('/explorar', function(req,res){
 })
 
 router.get('/explorar/:seccion', function(req,res){
-    con.query('SELECT p.*, u.Nombre, u.Apellido, u.fotoPerfil FROM Publicaciones p, Usuarios u WHERE seccion = ? and p.usuario = u.usuario', req.params.seccion ,function(err,result){
+    con.query('SELECT p.*, u.nombre, u.apellido, u.fotoPerfil FROM Publicaciones p, Usuarios u WHERE seccion = ? and p.usuario = u.usuario ORDER BY fecha DESC', req.params.seccion ,function(err,result){
         if(err){
             throw err;
         }
@@ -50,6 +50,28 @@ router.get('/explorar/:seccion', function(req,res){
     });
 })
 
+
+//----------------------------------------------------------------------------------------------------------------------------------------//
+//API PERFIL
+//----------------------------------------------------------------------------------------------------------------------------------------//
+router.get('/feed/:usuario', function(req,res){
+    con.query('SELECT p.*, u.nombre, u.apellido, u.fotoPerfil FROM Publicaciones p, Usuarios u WHERE u.usuario = ? and p.usuario = u.usuario ORDER BY fecha DESC',req.params.usuario , function(err,result){
+        if(err){
+            throw err;
+        }
+        res.send(result);
+    });
+})
+
+router.get('/feed/:usuario/:seccion', function(req,res){
+    var feed = [req.params.seccion, req.params.usuario]
+    con.query('SELECT p.*, u.nombre, u.apellido, u.fotoPerfil FROM Publicaciones p, Usuarios u WHERE seccion = ? and p.usuario = u.usuario and u.usuario = ? ORDER BY fecha DESC',feed , function(err,result){
+        if(err){
+            throw err;
+        }
+        res.send(result);
+    });
+})
 //----------------------------------------------------------------------------------------------------------------------------------------//
 //API INTERACCIONES
 //----------------------------------------------------------------------------------------------------------------------------------------//
@@ -135,6 +157,24 @@ router.get('/cantPublicaciones/:usuario', function(req,res){
     });
 })
 
+router.get('/isFollow/:seguidor/:seguido', function(req,res){
+    con.query('SELECT * FROM SyS WHERE seguido = ? AND seguidor = ?;',[req.params.seguido, req.params.seguidor], function(err,filas, columnas){
+        if(err){
+            console.log(err)
+            
+        }
+        else if(filas.length > 0){
+            res.status(200)
+            res.send(true);
+        }
+        else{
+            res.status(404)
+            res.send(false);
+        }
+        
+    });
+});
+
 //----------------------------------------------------------------------------------------------------------------------------------------//
 //API BUSQUEDA
 //----------------------------------------------------------------------------------------------------------------------------------------//
@@ -151,7 +191,7 @@ router.get('/usuario/:usuario', function(req,res){
 //API SUGERENCIAS
 //----------------------------------------------------------------------------------------------------------------------------------------//
 router.get('/popular', function(req,res){
-    con.query('SELECT p.* FROM (SELECT COUNT(*) likes, p.idPublicaciones FROM Publicaciones p, Likes l WHERE p.idPublicaciones = l.publicacion GROUP BY p.idPublicaciones ORDER BY likes, p.fecha LIMIT 3) cant, Publicaciones p WHERE cant.idPublicaciones = p.idPublicaciones', req.params.usuario ,function(err,result){
+    con.query('SELECT p.*, u.nombre, u.apellido, u.fotoPerfil FROM (SELECT COUNT(*) likes, p.idPublicaciones FROM Publicaciones p, Likes l WHERE p.idPublicaciones = l.publicacion GROUP BY p.idPublicaciones ORDER BY likes, p.fecha LIMIT 2) cant, Publicaciones p, Usuarios u WHERE cant.idPublicaciones = p.idPublicaciones AND p.usuario = u.usuario', req.params.usuario ,function(err,result){
         if(err){
             throw err;
         }
@@ -160,7 +200,7 @@ router.get('/popular', function(req,res){
 })
 
 router.get('/sugerencias', function(req,res){
-    con.query('SELECT * FROM Usuarios ORDER BY RAND() LIMIT 3', req.params.usuario ,function(err,result){
+    con.query('SELECT * FROM Usuarios ORDER BY RAND() LIMIT 2',function(err,result){
         if(err){
             throw err;
         }
@@ -173,8 +213,8 @@ router.get('/sugerencias', function(req,res){
 //----------------------------------------------------------------------------------------------------------------------------------------//
 
 
-router.get('/notificaciones', function(req,res){
-    con.query('SELECT * FROM Notificaciones ORDER BY fecha' ,function(err,result){
+router.get('/notificaciones/:usuario', function(req,res){
+    con.query('SELECT * FROM Notificaciones WHERE usuarioNotificacion = ? AND usuarioInteraccion != ? ORDER BY fecha',[req.params.usuario,req.params.usuario],function(err,result){
         if(err){
             throw err;
         }

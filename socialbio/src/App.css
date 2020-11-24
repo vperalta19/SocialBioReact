@@ -3,6 +3,14 @@
   outline: none;
 }
 
+a{
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
 .floating-container{
 	background-color: white;
 	border-radius: 20px;
@@ -98,7 +106,27 @@
   font-weight: normal;
   line-height: 12px;
 }
+
+.btnVerdeInvertido:hover{
+  background: linear-gradient(90deg, #104D3B 0%, #267053 100%);
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+  border: none transparent;
+  font-style: normal;
+  font-weight: normal;
+  
+  line-height: 12px;
+}
+
 .inputFile{
 display: block;
 margin-top:10px;
+}
+
+.cargando{
+  position: relative;
+  z-index: 9999;
+  margin-left: auto;
+  margin-right: auto;
 }

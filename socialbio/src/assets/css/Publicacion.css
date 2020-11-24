@@ -6,6 +6,12 @@
 
 }
 
+.publicacion .imagen{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .publicacion .nombre{
     font-style: normal;
     font-weight: 500;

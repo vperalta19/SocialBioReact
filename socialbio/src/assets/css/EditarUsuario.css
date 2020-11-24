@@ -1,0 +1,28 @@
+.botonEditar{
+    padding: 10px;
+    width: 150px;
+    height: fit-content;
+}
+
+.editarUsuario{
+    padding: 50px;
+    width: 400px;
+}
+
+
+.editarUsuario .editarInput{
+    padding: 10px;
+    width: 100%;
+    border: solid 1px orange;
+    border-radius: 25px;
+    margin: 5px;
+}
+
+a{
+    text-decoration: none;
+  }
+  
+  a:hover{
+    text-decoration: none;
+  }
+

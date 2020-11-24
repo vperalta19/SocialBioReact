@@ -1,8 +1,9 @@
+import { useHistory } from "react-router";
 import { login, registrar } from "../services/apiRoutes";
 
 export default class UsuariosController {
 	
-	contructor(){
+	contructor(props){
         this._usuarioLogged = null;
 	}
 
@@ -43,5 +44,7 @@ export default class UsuariosController {
 		
 		return validacion;
     }
+
+    
 
 }

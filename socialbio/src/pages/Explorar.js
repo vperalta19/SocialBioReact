@@ -5,17 +5,15 @@ import CategoriasBtn from '../components/CategoriasBtn'
 import SeccionDerecha from '../components/SeccionDerecha'
 
 import Publicacion from '../components/Publicacion'
-import {getInicio, getInicioSeccion} from '../services/apiRoutes'
-import Popup from '../components/CrearPublicacion';
+import {getExplorar, getExplorarSeccion} from '../services/apiRoutes'
 import { GlobalContext } from '../controllers/Context';
 
 import ReactLoading from 'react-loading';
-import { Link } from 'react-router-dom';
 
-export default class App extends React.Component {
+export default class Explorar extends React.Component {
   static contextType = GlobalContext;
   constructor(props){
-    super(props);
+    super();
     this.state = {
       publicaciones: [],
       open: false,
@@ -26,14 +24,12 @@ export default class App extends React.Component {
 
   async setCategoria(categoria){
     this.setState({cargando: true})
-    const usuario = await this.context.UsuariosController.getUsuarioLogged();
-    const user = usuario.usuario
     var publi = []
     if(categoria==='todo'){
-      publi = await getInicio(user);
+      publi = await getExplorar();
     }
     else{
-      publi = await getInicioSeccion(user,categoria);
+      publi = await getExplorarSeccion(categoria);
     }
     
     this.setState({
@@ -54,15 +50,9 @@ export default class App extends React.Component {
     })
   }
 
-  perfilAjeno(){
-    this.props.history.push("/PerfilAjeno")
-  }
-
   async componentDidMount(){
     this.setState({cargando: true})
-    const usuario = await this.context.UsuariosController.getUsuarioLogged();
-    const user = usuario.usuario
-    const publi = await getInicio(user);
+    const publi = await getExplorar();
     this.setState({
       publicaciones: publi
     })
@@ -77,10 +67,7 @@ export default class App extends React.Component {
               <Menu></Menu>
             </div>
             <div className='col-xl-7 col-md-10 col-12 publicaciones'>
-            <div className='d-none d-md-block'>
-              <Link to='/CrearPublicacion'><button className="btn btncrearpublicacion btn-sm mt-2" type="button" value="Crear Publicacion" onClick={this.togglePopup.bind(this)}>Crear Publicacion</button></Link>
-              
-            </div>
+            
               <CategoriasBtn categoriaFn={this.setCategoria.bind(this)}></CategoriasBtn>
               <div className='row'>
                 <div className='col-12 publicaciones'>
@@ -105,7 +92,7 @@ export default class App extends React.Component {
                         
                         (value, index)=>{
                             return(
-                                <Publicacion key = {index} publicacion = {value} uso='feed' perfilAjeno={this.perfilAjeno.bind(this)}/>
+                                <Publicacion key = {index} publicacion = {value} uso='feed'/>
                             )
                         }
                       )

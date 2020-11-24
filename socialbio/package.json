@@ -30,8 +30,11 @@
     "react-bootstrap": "^1.3.0",
     "react-dom": "^16.13.1",
     "react-image-file": "^0.3.0",
+    "react-loading": "^2.0.3",
+    "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
+    "reactjs-popup": "^2.0.4",
     "typescript": "^4.0.3"
   },
   "scripts": {

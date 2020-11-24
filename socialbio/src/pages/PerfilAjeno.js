@@ -2,13 +2,12 @@ import React from 'react';
 
 import Menu from '../components/Menu'
 import CategoriasBtn from '../components/CategoriasBtn'
-import Popup from 'reactjs-popup';
 import Publicacion from '../components/Publicacion'
 import {getFeed, getFeedSeccion} from '../services/apiRoutes'
 import { GlobalContext } from '../controllers/Context';
 import BioUsuario from '../components/BioUsuario';
 import NavBar from '../components/NavBar';
-import EditarUsuario from '../components/EditarUsuario';
+import Seguir from '../components/Seguir';
 import ReactLoading from 'react-loading';
 import '../assets/css/EditarUsuario.css'
 
@@ -69,7 +68,7 @@ export default class App extends React.Component {
 
   async componentDidMount(){
     this.setState({cargando: true})
-    const usuario = await this.context.UsuariosController.getUsuarioLogged();
+    const usuario = JSON.parse(sessionStorage.getItem('usuarioAjeno'))
     const user = usuario.usuario
     const publi = await getFeed(user);
     this.setState({
@@ -82,23 +81,18 @@ export default class App extends React.Component {
   render(){
     return (
         <div className='container-fluid'>
-            
             <div className="row">
-                
-              <div className='col'>
+                <div className='col-2 p-0 m-0 d-none d-md-block'>
                 <Menu></Menu>
-              </div>
-              <div className='col-md-10 col-12'>
+                </div>
+                <div className='col'>
                   <NavBar></NavBar>
                       <div className='row'>
                         {(this.state.usuario)&&<BioUsuario usuario={this.state.usuario}></BioUsuario>}
                         <div className='col m-3 text-center'>
-                          <button className='btnVerdeInvertido botonEditar' onClick={this.openEditarUsuario.bind(this)}>Editar Perfil</button>
-                          <Popup open={this.state.editarUsuario} onClose={() => {this.setState({ editarUsuario: false })}}>
-                            <EditarUsuario
-                              usuario={this.state.usuario}
-                              closeFunc={() => {this.closeEditarUsuario()}}/>
-                          </Popup>
+                            {(this.state.usuario)&&<Seguir usuario={this.state.usuario.usuario}></Seguir>}
+                          
+                          
                         </div>
                       </div>
                       

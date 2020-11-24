@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const con = require('../Database');
+const { cloudinary } = require('../services/img.service');
 //------------------------------------------------------------------------------------------------------------
 router.post('/registrar', function(req,res){
     var registrar = req.body;
@@ -35,32 +36,39 @@ router.post('/registrar', function(req,res){
      });
 });
 
-router.put('/editarUsuario/:usuario', function(req,res){
+router.put('/editarUsuario/', async function(req,res){
     var actualizar = req.body;
-    var usuario = req.params.usuario;
-    var usuarioArray = [
-        actualizar.nombre,
-        actualizar.apellido,
-        actualizar.usuario, 
-        actualizar.contraseña, 
-        actualizar.biografia, 
-        actualizar.fotoPerfil, 
-        actualizar.email,
-        usuario
-    ];
-    con.query('SELECT usuario, email FROM Usuarios WHERE usuario = ?', usuario, function(err,row,field){
+    con.query('SELECT usuario, email FROM Usuarios WHERE usuario = ?', actualizar.usuario, async function(err,row,field){
         if(err) {
-            throw err;
+            console.log('primer select',err)
         }
         else if (row.length === 0) {         
             res.status(404)                                          
             res.send('No existe el usuario')
         }
         else{
-            con.query('UPDATE Usuarios SET nombre = ?, apellido = ?,usuario = ?, contraseña = ?, biografia = ?, fotoPerfil = ?, email = ? WHERE usuario = ?', usuarioArray, function(err,result){
+            if(actualizar.imagenCambiada) {
+                try{
+                    let uploadResponse = await cloudinary.uploader.upload(actualizar.fotoPerfil);
+                    actualizar.fotoPerfil = uploadResponse.secure_url;
+                }
+                catch(err){
+                    console.log('cloudinary',err)
+                }
+                
+            }
+            var usuarioArray = [
+                actualizar.nombre,
+                actualizar.apellido,
+                actualizar.contraseña, 
+                actualizar.biografia, 
+                actualizar.fotoPerfil,
+                actualizar.usuario
+            ];
+            con.query('UPDATE Usuarios SET nombre = ?, apellido = ?, contraseña = ?, biografia = ?, fotoPerfil = ? WHERE usuario = ?', usuarioArray, function(err,result){
                 if(err){
                     res.status(400)    
-                    throw err;
+                    console.log('sql',err)
                 }
                 res.status(200)    
                 res.send('se actualizo correctamente');
@@ -69,13 +77,10 @@ router.put('/editarUsuario/:usuario', function(req,res){
     });
 });
 
-router.get('/usuarios/:id', (req,res) => {
-    let idUser = parseInt(req.params.id);
-    if(isNaN(idUser)){
-        return response.send("DEBE INGRESAR UN NUMERO COMO PARAMETRO");
-    }
-    let sql = 'SELECT * FROM usuarios WHERE idUser = ?';
-    con.query(sql,[idUser],function(err,result){
+router.get('/usuarios/:usuario', (req,res) => {
+    let usuario = req.params.usuario;
+    let sql = 'SELECT * FROM Usuarios WHERE usuario = ?';
+    con.query(sql,[usuario],function(err,result){
         if(err) throw err;
         else if(result.length == 0){
             res.status(404)  

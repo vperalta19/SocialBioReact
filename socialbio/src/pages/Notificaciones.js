@@ -4,13 +4,12 @@ import Menu from '../components/Menu'
 import CategoriasBtn from '../components/CategoriasBtn'
 import SeccionDerecha from '../components/SeccionDerecha'
 
-import Publicacion from '../components/Publicacion'
-import {getInicio, getInicioSeccion} from '../services/apiRoutes'
+import Notificacion from '../components/Notificacion'
+import {notificaciones} from '../services/apiRoutes'
 import Popup from '../components/CrearPublicacion';
 import { GlobalContext } from '../controllers/Context';
 
 import ReactLoading from 'react-loading';
-import { Link } from 'react-router-dom';
 
 export default class App extends React.Component {
   static contextType = GlobalContext;
@@ -24,49 +23,19 @@ export default class App extends React.Component {
     }
   }
 
-  async setCategoria(categoria){
-    this.setState({cargando: true})
-    const usuario = await this.context.UsuariosController.getUsuarioLogged();
-    const user = usuario.usuario
-    var publi = []
-    if(categoria==='todo'){
-      publi = await getInicio(user);
-    }
-    else{
-      publi = await getInicioSeccion(user,categoria);
-    }
-    
-    this.setState({
-      categoria: categoria,
-      publicaciones: []
-    })
-    this.setState({
-      publicaciones: publi
-    })
-
+  cargando(){
     this.setState({cargando: false})
-    
-  }
-
-  togglePopup(){
-    this.setState({
-      open: !this.state.open
-    })
-  }
-
-  perfilAjeno(){
-    this.props.history.push("/PerfilAjeno")
   }
 
   async componentDidMount(){
     this.setState({cargando: true})
     const usuario = await this.context.UsuariosController.getUsuarioLogged();
     const user = usuario.usuario
-    const publi = await getInicio(user);
+    const noti = await notificaciones(user);
     this.setState({
-      publicaciones: publi
+      notificaciones: noti
     })
-    this.setState({cargando: false})
+    
   }
   
   render(){
@@ -77,13 +46,8 @@ export default class App extends React.Component {
               <Menu></Menu>
             </div>
             <div className='col-xl-7 col-md-10 col-12 publicaciones'>
-            <div className='d-none d-md-block'>
-              <Link to='/CrearPublicacion'><button className="btn btncrearpublicacion btn-sm mt-2" type="button" value="Crear Publicacion" onClick={this.togglePopup.bind(this)}>Crear Publicacion</button></Link>
-              
-            </div>
-              <CategoriasBtn categoriaFn={this.setCategoria.bind(this)}></CategoriasBtn>
               <div className='row'>
-                <div className='col-12 publicaciones'>
+                <div className='col-12'>
                   {(() => {
                       if (this.state.cargando){
                           return (
@@ -100,12 +64,12 @@ export default class App extends React.Component {
                   })()}
                   {
                     
-                    (this.state.publicaciones) &&
-                      this.state.publicaciones.map(
+                    (this.state.notificaciones) &&
+                      this.state.notificaciones.map(
                         
                         (value, index)=>{
                             return(
-                                <Publicacion key = {index} publicacion = {value} uso='feed' perfilAjeno={this.perfilAjeno.bind(this)}/>
+                                <Notificacion key={index} notificacion={value} cargando={this.cargando.bind(this)}></Notificacion>
                             )
                         }
                       )
