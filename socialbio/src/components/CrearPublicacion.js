@@ -10,6 +10,7 @@ import Experiencias from "./../assets/img/experiencias.png"
 import './../assets/css/CategoriaBtns.css'
 import { GlobalContext } from "../controllers/Context";
 import { Alert } from "@material-ui/lab";
+import './../assets/css/CategoriaBtns.css'
  
 export default class Popup extends React.Component {
   static contextType = GlobalContext;
@@ -24,11 +25,13 @@ export default class Popup extends React.Component {
     }
   }
 
-  setCategoria = (categoria) => {
+  setCategoria(categoria){
     this.setState({
         categoria: categoria
     })
+    console.log(this.state.categoria)
   }
+  
 
   comparacion(event){
       return (event.target.name === this.state.categoria)
@@ -118,6 +121,7 @@ export default class Popup extends React.Component {
               <button className='btnVerdeInvertido text-center' onClick={this.props.handleClose}><FontAwesomeIcon icon={faArrowLeft}/> Volver</button>
             </div>
             {(() => {
+              
               if (this.state.alert){
                   return (
                       <Alert style={{width:'100%'}} variant="filled" severity={this.state.alertType}>
@@ -133,61 +137,61 @@ export default class Popup extends React.Component {
             </div>
             <div className='row m-0'>
               <div className="col m-1 p-0">
-                      {(() => {
-                          if ('reciclaje'===this.state.categoriaSeleccionada){
-                              return (
-                                  <button className="btncategorias b btn-sm mt-2 seleccionado" name="reciclaje" onClick={()=>{this.setCategoria('reciclaje')}}><img className="imagen" src={Reciclaje} alt=""/><br/>Reciclaje</button>
-                              )
-                          }
-                          else{
-                              return (
-                                  <button className="btncategorias b btn-sm mt-2" name="reciclaje" onClick={()=>{this.setCategoria('reciclaje')}}><img className="imagen" src={Reciclaje} alt=""/><br/>Reciclaje</button>
-                              )
-                          }
-                      })()}
-                  </div>
-                  <div className="col m-1 p-0">
-                      {(() => {
-                          if ('tips'===this.state.categoriaSeleccionada){
-                              return (
-                                  <button className="btncategorias c btn-sm mt-2 seleccionado" name="tips" onClick={()=>{this.setCategoria('tips')}}><img className="imagenLuz" src={Tips} alt=""/><br/>Tips</button>
-                              )
-                          }
-                          else{
-                              return (
-                                  <button className="btncategorias c btn-sm mt-2" name="tips" onClick={()=>{this.setCategoria('tips')}}><img className="imagenLuz" src={Tips} alt=""/><br/>Tips</button>
-                              )
-                          }
-                      })()}
-                  </div>
-                  <div className="col m-1 p-0">
-                      {(() => {
-                          if ('eventos'===this.state.categoriaSeleccionada){
-                              return (
-                                  <button className="btncategorias d btn-sm mt-2 seleccionado" name="eventos" onClick={()=>{this.setCategoria('eventos')}}><img className="imagen" src={Eventos} alt=""/><br/>Eventos</button>
-                              )
-                          }
-                          else{
-                              return (
-                                  <button className="btncategorias d btn-sm mt-2" name="eventos" onClick={()=>{this.setCategoria('eventos')}}><img className="imagen" src={Eventos} alt=""/><br/>Eventos</button>
-                              )
-                          }
-                      })()}
-                  </div>
-                  <div className="col m-1 p-0">
-                      {(() => {
-                          if ('experiencias'===this.state.categoriaSeleccionada){
-                              return (
-                                  <button className="btncategorias e btn-sm mt-2 seleccionado" name="experiencias" onClick={()=>{this.setCategoria('experiencias')}}><img className="imagen" src={Experiencias} alt=""/><br/>Experiencias</button>
-                              )
-                          }
-                          else{
-                              return (
-                                  <button className="btncategorias e btn-sm mt-2" name="experiencias" onClick={()=>{this.setCategoria('experiencias')}}><img className="imagen" src={Experiencias} alt=""/><br/>Experiencias</button>
-                              )
-                          }
-                      })()}
-                  </div>    
+                {(() => {
+                    if ('reciclaje'===this.state.categoria){
+                        return (
+                            <button className="btncategorias b  mt-2 seleccionado" name="reciclaje" onClick={()=>{this.setCategoria('reciclaje')}}><img className="imagen" src={Reciclaje} alt=""/><br/>Reciclaje</button>
+                        )
+                    }
+                    else{
+                        return (
+                            <button className="btncategorias b  mt-2" name="reciclaje" onClick={()=>{this.setCategoria('reciclaje')}}><img className="imagen" src={Reciclaje} alt=""/><br/>Reciclaje</button>
+                        )
+                    }
+                })()}
+                </div>
+                <div className="col m-1 p-0">
+                    {(() => {
+                        if ('tips'===this.state.categoria){
+                            return (
+                                <button className="btncategorias c  mt-2 seleccionado" name="tips" onClick={()=>{this.setCategoria('tips')}}><img className="imagenLuz" src={Tips} alt=""/><br/>Tips</button>
+                            )
+                        }
+                        else{
+                            return (
+                                <button className="btncategorias c  mt-2" name="tips" onClick={()=>{this.setCategoria('tips')}}><img className="imagenLuz" src={Tips} alt=""/><br/>Tips</button>
+                            )
+                        }
+                    })()}
+                </div>
+                <div className="col m-1 p-0">
+                    {(() => {
+                        if ('eventos'===this.state.categoria){
+                            return (
+                                <button className="btncategorias d  mt-2 seleccionado" name="eventos" onClick={()=>{this.setCategoria('eventos')}}><img className="imagen" src={Eventos} alt=""/><br/>Eventos</button>
+                            )
+                        }
+                        else{
+                            return (
+                                <button className="btncategorias d  mt-2" name="eventos" onClick={()=>{this.setCategoria('eventos')}}><img className="imagen" src={Eventos} alt=""/><br/>Eventos</button>
+                            )
+                        }
+                    })()}
+                </div>
+                <div className="col m-1 p-0">
+                    {(() => {
+                        if ('experiencias'===this.state.categoria){
+                            return (
+                                <button className="btncategorias e  mt-2 seleccionado" name="experiencias" onClick={()=>{this.setCategoria('experiencias')}}><img className="imagen" src={Experiencias} alt=""/><br/>Experiencias</button>
+                            )
+                        }
+                        else{
+                            return (
+                                <button className="btncategorias e  mt-2" name="experiencias" onClick={()=>{this.setCategoria('experiencias')}}><img className="imagen" src={Experiencias} alt=""/><br/>Experiencias</button>
+                            )
+                        }
+                    })()}
+                </div>    
               </div>
             <div className="input-group">
                 <textarea className="form-control mt-2" aria-label="With textarea" rows="5" placeholder="Escribe aqui.." name='descripcion' value={this.state.descripcion} onChange={this.handleChange}></textarea>

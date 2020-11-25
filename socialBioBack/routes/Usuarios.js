@@ -21,9 +21,10 @@ router.post('/registrar', function(req,res){
                 registrar.apellido, 
                 registrar.usuario, 
                 registrar.contraseña,
-                registrar.email
+                registrar.email,
+                'https://res.cloudinary.com/dai8fqtrr/image/upload/v1605900190/blnb06pe1astrzmnlhb0.jpg'
             ];
-            con.query('INSERT INTO Usuarios (nombre, apellido, usuario, contraseña, email) VALUES (?,?,?,?,?)', usuarioArray, function(err,result){
+            con.query('INSERT INTO Usuarios (nombre, apellido, usuario, contraseña, email, fotoPerfil) VALUES (?,?,?,?,?,?)', usuarioArray, function(err,result){
                 if(err){
                     res.status(401)    
                     throw err;

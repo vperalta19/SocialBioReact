@@ -1,5 +1,5 @@
 import { useHistory } from "react-router";
-import { login, registrar } from "../services/apiRoutes";
+import { getUsuario, login, registrar } from "../services/apiRoutes";
 
 export default class UsuariosController {
 	
@@ -12,7 +12,8 @@ export default class UsuariosController {
         const response = await registrar(usuario);
         if(response.status === 200) {
             validacion = true;
-            sessionStorage.setItem('usuario',JSON.stringify(usuario));
+            const user = await getUsuario(usuario.usuario);
+            sessionStorage.setItem('usuario',JSON.stringify(user));
             this._usuarioLogged = usuario;
         }
         return validacion
