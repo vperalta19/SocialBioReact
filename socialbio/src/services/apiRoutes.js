@@ -9,9 +9,9 @@ export const popular = async () =>{
     }
 }
 
-export const sugerencias = async () =>{
+export const sugerencias = async (usuario) =>{
     try {
-        const response = await fetch('http://localhost:3500/sugerencias/');
+        const response = await fetch('http://localhost:3500/sugerencias/'+usuario);
         const json = await response.json();
         return json;
     } 

@@ -200,7 +200,8 @@ router.get('/popular', function(req,res){
 })
 
 router.get('/sugerencias/:usuario', function(req,res){
-    con.query('SELECT u.* FROM Usuarios u, SyS s WHERE u.usuario != ? AND u.usuario = s.seguido AND s.seguidor != ? ORDER BY RAND() LIMIT 2',[req.params.usuario,req.params.usuario],function(err,result){
+    
+    con.query('SELECT * FROM Usuarios WHERE usuario != ?  ORDER BY RAND() LIMIT 2',[req.params.usuario],function(err,result){
         if(err){
             throw err;
         }

@@ -50,6 +50,10 @@ export default class Explorar extends React.Component {
     })
   }
 
+  perfilAjeno(){
+    this.props.history.push("/PerfilAjeno")
+  }
+
   async componentDidMount(){
     this.setState({cargando: true})
     const publi = await getExplorar();
@@ -92,7 +96,7 @@ export default class Explorar extends React.Component {
                         
                         (value, index)=>{
                             return(
-                                <Publicacion key = {index} publicacion = {value} uso='feed'/>
+                                <Publicacion key = {index} publicacion = {value} uso='feed' perfilAjeno={this.perfilAjeno.bind(this)}/>
                             )
                         }
                       )

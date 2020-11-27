@@ -26,3 +26,17 @@ a{
     text-decoration: none;
   }
 
+
+
+.confirmar{
+    font-size: 15px;
+    padding: 10px 20px;
+}
+
+.cerrarSesion:hover{
+    background: linear-gradient(90deg, #F66C0B 0%, #FBAE43 96.79%);
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    border: none;
+}

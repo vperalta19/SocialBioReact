@@ -88,6 +88,11 @@ button:hover{
     width: 13px;
   }
 }
+
+.publicar{
+  font-size: 15px;
+  padding: 10px 20px;
+}
   
 .btncrearpublicacion {
   background: linear-gradient(90deg, #0F4C3A 0%, #267153 100%);

@@ -65,7 +65,13 @@ export default class App extends React.Component {
 		this.setState({
 			editarUsuario: false
 		});
-	}
+  }
+  
+  cerrarSesion(){
+    sessionStorage.clear();
+    this.props.history.push('/')
+
+  }
 
   async componentDidMount(){
     this.setState({cargando: true})
@@ -92,14 +98,15 @@ export default class App extends React.Component {
                   <NavBar></NavBar>
                       <div className='row'>
                         {(this.state.usuario)&&<BioUsuario usuario={this.state.usuario}></BioUsuario>}
-                        <div className='col m-3 text-center'>
+                        <div className='col mt-3 text-center'>
                           <button className='btnVerdeInvertido botonEditar' onClick={this.openEditarUsuario.bind(this)}>Editar Perfil</button>
                           <Popup open={this.state.editarUsuario} onClose={() => {this.setState({ editarUsuario: false })}}>
                             <EditarUsuario
                               usuario={this.state.usuario}
                               closeFunc={() => {this.closeEditarUsuario()}}/>
                           </Popup>
-                        </div>
+                          <button className='btnNaranjaInvertido botonEditar cerrarSesion' onClick={this.cerrarSesion.bind(this)}>Cerrar Session</button>
+                        </div >
                       </div>
                       
 

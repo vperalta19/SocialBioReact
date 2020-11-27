@@ -176,7 +176,7 @@ export default class EditarUsuario extends React.Component {
                             <input type='text' placeholder='Apellido' className='editarInput' value={this.state.apellido} name='apellido' onChange={this.handleChange}></input>
                         </div>
                         <div className='row'>
-                            <input type='text' placeholder='contraseña' className='editarInput' value={this.state.contraseña} name='contraseña' onChange={this.handleChange}></input>
+                            <input type='password' placeholder='contraseña' className='editarInput' value={this.state.contraseña} name='contraseña' onChange={this.handleChange}></input>
                         </div>
                         
                         <div className='row'>
@@ -186,7 +186,7 @@ export default class EditarUsuario extends React.Component {
                 </div>
                 <div className='row'>
                     <div className='col text-right'>
-                        <button className='btnNaranja' onClick={this.handleClick.bind(this)}>Confirmar</button>
+                        <button className='btnNaranja confirmar' onClick={this.handleClick.bind(this)}>Confirmar</button>
                     </div>
                     
                 </div>

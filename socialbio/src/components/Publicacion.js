@@ -8,17 +8,18 @@ import TresPuntitos from './TresPuntitos'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faComment} from '@fortawesome/free-solid-svg-icons'
 import { browserHistory } from 'react-router';
-import './../assets/css/Publicacion.css';
+
 import CloudinaryContext from 'cloudinary-react/lib/components/CloudinaryContext';
 import { Link } from 'react-router-dom';
 import { getUsuario } from '../services/apiRoutes';
 import { GlobalContext } from '../controllers/Context';
+import './../assets/css/Publicacion.css';
 
 
 export default class Publicacion extends React.Component{
     static contextType = GlobalContext;
     constructor(props){
-        super()
+        super(props)
         this.state={
             uso: '',
             nombreUser: '',
@@ -29,7 +30,9 @@ export default class Publicacion extends React.Component{
             descripcion: '',
             imagen: '',
             avatar: '',
-            idPublicaciones: ''
+            idPublicaciones: '',
+            seccion: '',
+            color:''
         }
     };
 
@@ -49,12 +52,25 @@ export default class Publicacion extends React.Component{
     async setPerfilAjeno(){
         const usuario = await getUsuario(this.props.publicacion.usuario)
         sessionStorage.setItem('usuarioAjeno',JSON.stringify(usuario))
-        await this.context.UsuariosController.perfilAjeno()
+        this.props.perfilAjeno()
     }
 
     componentDidMount(){
         var {publicacion} = this.props;
         var {uso} = this.props
+        var color ='';
+        if(publicacion.seccion === 'reciclaje'){
+            color = 'b'
+        }
+        else if(publicacion.seccion === 'tips'){
+            color = 'c'
+        }
+        else if(publicacion.seccion === 'eventos'){
+            color = 'd'
+        }
+        else if(publicacion.seccion === 'experiencias'){
+            color = 'e'
+        }
         this.setState({
             uso: uso,
             idPublicaciones: publicacion.idPublicaciones,
@@ -64,8 +80,11 @@ export default class Publicacion extends React.Component{
             likes: publicacion.cantLikes,
             descripcion: publicacion.descripcion,
             imagen: publicacion.imagen,
-            avatar: publicacion.fotoPerfil
+            avatar: publicacion.fotoPerfil,
+            seccion: publicacion.seccion,
+            color: color
         });
+
         
         this.textoCorto();
     }
@@ -73,17 +92,17 @@ export default class Publicacion extends React.Component{
     render(){
         return(
             <div>
-                <div className='row publicacion'>
-                    <div className='col-1 p-0 m-0'>
+                <div className={'row publicacion '+this.state.color}>
+                    <div className='col-1 p-0'>
                         <CloudinaryContext cloudName="dai8fqtrr" onClick={this.setPerfilAjeno.bind(this)} style={{cursor:'pointer'}}>
                             <Image publicId={this.state.avatar} secure="true" className='avatar' alt='imagen de perfil'/>
                         </CloudinaryContext>
 
                     </div>
-                    <div className='col-11 '>
+                    <div className='col-11'>
                         <div className='row m-2'>
                             <div className='col p-0'>
-                                <span className='nombre'>{this.state.nombreUser} <span className='texto'>{this.state.user}</span></span>
+                                <span className='nombre'>{this.state.nombreUser} <span>{this.state.user}</span></span>
                             </div>
                             
                             

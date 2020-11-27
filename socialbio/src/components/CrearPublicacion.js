@@ -2,15 +2,16 @@ import React from "react";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons'
-import '../assets/css/CrearPublicacion.css'
+
 import Reciclaje from "./../assets/img/reciclaje.png"
 import Tips from "./../assets/img/tips.png"
 import Eventos from "./../assets/img/eventos.png"
 import Experiencias from "./../assets/img/experiencias.png"
-import './../assets/css/CategoriaBtns.css'
+
 import { GlobalContext } from "../controllers/Context";
 import { Alert } from "@material-ui/lab";
 import './../assets/css/CategoriaBtns.css'
+import '../assets/css/CrearPublicacion.css'
  
 export default class Popup extends React.Component {
   static contextType = GlobalContext;
@@ -217,7 +218,7 @@ export default class Popup extends React.Component {
             </div>
             <div className='row'>
               <div className='col text-right'>
-                <button className="btnNaranja publicar mt-5 mb-3" type="button" name="button"  onClick={this.handleSubmitFile}>Publicar</button>
+                <button className="btnNaranja publicar mt-5 mb-3"  onClick={this.handleSubmitFile}>Publicar</button>
               </div>
             </div>
             

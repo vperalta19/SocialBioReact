@@ -4,8 +4,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './../assets/css/Derecha.css';
 import ReactLoading from 'react-loading';
 import {sugerencias} from '../services/apiRoutes'
+import { GlobalContext } from '../controllers/Context';
 
 export default class Sugerencias extends React.Component{
+    static contextType = GlobalContext;
     constructor(props){
         super(props);
         this.state = {
@@ -16,7 +18,9 @@ export default class Sugerencias extends React.Component{
 
     async componentDidMount(){
         this.setState({cargando: true})
-        const usuarios = await sugerencias();
+        const usuario = await this.context.UsuariosController.getUsuarioLogged()
+        
+        const usuarios = await sugerencias(usuario.usuario);
         this.setState({
             usuarios: usuarios
         })
