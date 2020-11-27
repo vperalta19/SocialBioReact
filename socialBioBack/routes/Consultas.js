@@ -199,8 +199,8 @@ router.get('/popular', function(req,res){
     });
 })
 
-router.get('/sugerencias', function(req,res){
-    con.query('SELECT * FROM Usuarios ORDER BY RAND() LIMIT 2',function(err,result){
+router.get('/sugerencias/:usuario', function(req,res){
+    con.query('SELECT u.* FROM Usuarios u, SyS s WHERE u.usuario != ? AND u.usuario = s.seguido AND s.seguidor != ? ORDER BY RAND() LIMIT 2',[req.params.usuario,req.params.usuario],function(err,result){
         if(err){
             throw err;
         }
