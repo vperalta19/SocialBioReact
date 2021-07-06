@@ -1,0 +1,26 @@
+*{
+    font-family: "Roboto";
+}
+
+.editar{
+    font-size: 15px;
+    padding: 10px 20px;
+}
+
+.nombreUser{
+    color: #236C50;
+    font-size: 26px;
+}
+.imagenUser{
+    width: 90px;
+    height: 90px;
+    border-radius: 150px;
+    margin-top:10px;
+}
+.bioUser{
+    line-height: 15px;
+    color: #104D3B;
+}
+.cuentaUser{
+    color: rgba(35, 108, 80, 0.5);;  
+}

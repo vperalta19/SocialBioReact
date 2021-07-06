@@ -1,0 +1,27 @@
+.navbar{
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(89.96deg, #F66B0A 0.03%, #FBB044 99.96%);
+    margin:0;
+    padding:0;
+    align-items: center;
+    
+}
+.top {
+ text-decoration: none !important;
+ display:inline;
+ color: white !important;
+ 
+}
+.headertop{ 
+  
+  margin:0;
+}
+
+a{
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: none;
+}

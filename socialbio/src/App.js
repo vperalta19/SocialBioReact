@@ -1,65 +1,47 @@
 import React from 'react';
 import './App.css';
-import Menu from './components/Menu'
-import SeccionDerecha from './components/SeccionDerecha'
-import Publicacion from './components/Publicacion'
+import GlobalContextProvider, { GlobalContext } from './controllers/Context';
+import	{BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import InicioSesion from './pages/InicioSesion';
+import Inicio from './pages/Inicio';
+import Home from './pages/Home';
+import Registrarse from './pages/Registrarse';
 import PublicacionCompleta from './pages/PublicacionCompleta';
+import Perfil from './pages/Perfil';
+import Explorar from './pages/Explorar';
+import Seguidos from './pages/Seguidos';
+import Seguidores from './pages/Seguidores';
+import PerfilAjeno from './pages/PerfilAjeno';
+import Notificaciones from './pages/Notificaciones';
+import CrearPublicacion from './pages/CrearPublicacion';
 
-import {getInicio} from './services/apiRoutes'
-import { Spinner } from 'react-bootstrap';
 
-class App extends React.Component {
-  constructor(props){
-    super();
-    this.state = {
-      inicio: []
-    }
-  }
+export class App extends React.Component {
+	static contextType = GlobalContext;
 
-  async getPublis(){
-    const publi = await getInicio('vaperalta')
-    this.setState({
-      inicio: publi
-    })
-  }
-
-  componentDidMount(){
-    this.getPublis();
-  }
-  
-  render(){
-    return (
-      <div className="App">
-        {
-          this.state.inicio.map(
-              (value, index)=>{
-                  return(
-                    <Publicacion key={index} uso='feed' ></Publicacion>
-                  )
-              }
-          )
-        }
-        {/* <PublicacionCompleta></PublicacionCompleta>
-        <div className='container-fluid'>
-          <div className="row">
-            <div className='col'>
-              <Menu></Menu>
-            </div>
-            <div className='col-xl-7 col-md-10 col-12 publicaciones'>
-              <Publicacion uso='feed'></Publicacion>
-              <Publicacion uso='feed'></Publicacion>
-              <Publicacion uso='feed'> </Publicacion>
-            </div>
-
-            <div className='col-3'>
-              <SeccionDerecha></SeccionDerecha>
-            </div>
-          </div>
-        </div>*/}
-      </div> 
-    );
-  }
+	render() {
+		return (
+			<GlobalContextProvider>
+				<Router>
+					<div className="fill App">
+						<Switch>
+							<Route path='/' exact component={Inicio} />
+							<Route path='/InicioSesion'  component={InicioSesion} />
+							<Route path='/Registrarse'  component={Registrarse} />
+							<Route path='/Home'  component={Home} />
+							<Route path='/CrearPublicacion'  component={CrearPublicacion} />
+							<Route path='/Notificaciones'  component={Notificaciones} />
+							<Route path='/PerfilAjeno'  component={PerfilAjeno} />
+							<Route path='/PublicacionCompleta' component={PublicacionCompleta} />
+							<Route path='/Perfil' component={Perfil} />
+							<Route path='/Seguidores' component={Seguidores} />
+							<Route path='/Seguidos' component={Seguidos} />
+							<Route path='/Explorar' component={Explorar} />
+						</Switch>
+					</div>
+				</Router>
+			</GlobalContextProvider>
+		);
+	}
 }
-
-export default App;

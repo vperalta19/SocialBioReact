@@ -1,0 +1,102 @@
+*:focus{
+  outline:none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+button{
+  border-radius:10px;
+  outline:none;
+  }
+button:hover{
+  text-decoration: none;
+}
+
+.btncategorias {
+  background-color: white;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  transition: 0.1s;
+  width: 100%;
+  height: 60px;
+  font-size: 13px;
+}
+  
+.btncategorias:hover {
+  border: 3px solid
+}
+
+.a{
+  border: 1px solid #E8EAF6;
+}
+
+.seleccionado.a,.a:hover{
+  border: 3px solid #E8EAF6
+}
+
+.b{
+  border: 1px solid #67BC52;
+}
+
+.seleccionado.b,.b:hover{
+  border: 3px solid #67BC52
+}
+
+.c{
+  border: 1px solid #FFD983;
+}
+
+.seleccionado.c,.c:hover{
+  border: 3px solid #FFD983
+}
+
+.d{
+  border: 1px solid #84A9D9;
+}
+
+.seleccionado.d,.d:hover{
+  border: 3px solid #84A9D9
+}
+
+.e{
+  border: 1px solid #ED4C5C;
+}
+
+.seleccionado.e,.e:hover{
+  border: 3px solid #ED4C5C
+}
+
+.imagen{
+  width: 25px;
+}
+.imagenLuz{
+  width: 18px;
+}
+
+@media(max-width: 761px){
+  .btncategorias {
+    font-size: 10px;
+    height: 45px;
+    width: 100%;
+  }
+  .imagen{
+    width: 20px;
+  }
+  .imagenLuz{
+    width: 13px;
+  }
+}
+
+.publicar{
+  font-size: 15px;
+  padding: 10px 20px;
+}
+  
+.btncrearpublicacion {
+  background: linear-gradient(90deg, #0F4C3A 0%, #267153 100%);
+  width: 100%;
+  border-radius: 15px;
+  color:white;
+}

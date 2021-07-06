@@ -1,4 +1,23 @@
 
+*:focus{
+  outline: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+.floating-container{
+	background-color: white;
+	border-radius: 20px;
+	z-index: 2;
+	box-shadow: 0 0 10px -3px black;
+	overflow: hidden;
+}
 
 .btnNaranjaInvertido:focus {
   outline: none;
@@ -21,6 +40,7 @@
   height: 40px;
   border-radius:150px;
   margin: 10px;
+  background-size: cover;
 }
 
 .publicaciones{
@@ -29,10 +49,8 @@
 
 .btnNaranja{
   background: linear-gradient(90deg, #F66C0B 0%, #FBAE43 96.79%);
-  border-radius: 15px;
+  border-radius: 25px;
   color: white;
-  width: 100px;
-  height: 20px;
   cursor: pointer;
   border: none;
   font-style: normal;
@@ -55,28 +73,27 @@
   cursor: pointer;
   font-style: normal;
   font-weight: normal;
-  font-size: 12px;
+  border-radius: 25px;
   line-height: 12px;
 }
 
 
-.botonVerde{
+.btnVerde{
   background: linear-gradient(90deg, #104D3B 0%, #267053 100%);
-  border-radius: 15px;
+  border-radius: 25px;
   color: white;
-  width: 100px;
-  height: 20px;
   cursor: pointer;
-  border: none;
+  border: none transparent;
   font-style: normal;
   font-weight: normal;
-  font-size: 12px;
+  
   line-height: 12px;
 }
 
 
 
 .btnVerdeInvertido{
+  border-radius: 25px;
   border: 1px solid transparent;
   align-self: center;
   background: white;
@@ -87,6 +104,29 @@
   cursor: pointer;
   font-style: normal;
   font-weight: normal;
-  font-size: 12px;
   line-height: 12px;
+}
+
+.btnVerdeInvertido:hover{
+  background: linear-gradient(90deg, #104D3B 0%, #267053 100%);
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+  border: none transparent;
+  font-style: normal;
+  font-weight: normal;
+  
+  line-height: 12px;
+}
+
+.inputFile{
+display: block;
+margin-top:10px;
+}
+
+.cargando{
+  position: relative;
+  z-index: 9999;
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -1,15 +1,21 @@
 .publicacion{
     border-radius: 25px;
-    border: 1px solid #000000;
+    border: 1px solid black;
     background-color: white;
     margin: 10px;
 
 }
 
+.publicacion .imagen{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .publicacion .nombre{
     font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
+    font-weight: 900;
+    font-size: 13px;
     line-height: 15px;
     color: #000000;
     float: left;
@@ -25,7 +31,7 @@
 .publicacion .texto{
     font-style: normal;
     font-weight: normal;
-    font-size: 12px;
+    font-size: 15px;
     line-height: 12px;
     color: #000000;
     text-align: left;
@@ -82,6 +88,38 @@
 
 .tresPuntitos{
     cursor: pointer;
+}
+
+.publicacion.b{
+    border: 1px solid #67BC52;
+}
+
+.publicacion.b .nombre{
+    color: #67BC52;
+}
+
+.publicacion.c{
+    border: 1px solid #FFD983;
+}
+
+.publicacion.c .nombre{
+    color: #FFD983;
+}
+
+.publicacion.d{
+    border: 1px solid #84A9D9;
+}
+
+.publicacion.d .nombre{
+    color: #84A9D9;
+}
+
+.publicacion.e{
+    border: 1px solid #ED4C5C;
+}
+
+.publicacion.e .nombre{
+    color: #ED4C5C;
 }
 
 

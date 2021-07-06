@@ -22,13 +22,13 @@
 .titulo span{
     font-style: normal;
     font-weight: normal;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 18px;
     color: white;
     
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1160px) {
     .seccionDerecha{
         display: none;
     }
